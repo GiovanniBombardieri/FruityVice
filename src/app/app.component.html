@@ -10,27 +10,35 @@
   </mat-drawer>
 
   <div class="sidenav-content">
-    <div class="toolbar">
-      <mat-toolbar>
-        <button mat-icon-button class="example-icon" (click)="drawer.toggle()">
-          <mat-icon>menu</mat-icon>
-        </button>
-        <span>FruityVice</span>
-        <span class="spacer"></span>
-        <button
-          mat-icon-button
-          class="example-icon favorite-icon"
-          aria-label="Example icon-button with heart icon"
-        >
-          <mat-icon>favorite</mat-icon>
-        </button>
-        <button
-          mat-icon-button
-          class="example-icon"
-          aria-label="Example icon-button with share icon"
-        >
-          <mat-icon>share</mat-icon>
-        </button>
+    <div>
+      <mat-toolbar class="toolbar">
+        <div class="toolbar-menu">
+          <button
+            mat-icon-button
+            class="example-icon"
+            (click)="drawer.toggle()"
+          >
+            <mat-icon>menu</mat-icon>
+          </button>
+          <p>FruityVice</p>
+        </div>
+        <div>
+          <!-- <span class="spacer"></span> -->
+          <button
+            mat-icon-button
+            class="example-icon favorite-icon"
+            aria-label="Example icon-button with heart icon"
+          >
+            <mat-icon>favorite</mat-icon>
+          </button>
+          <button
+            mat-icon-button
+            class="example-icon share-icon"
+            aria-label="Example icon-button with share icon"
+          >
+            <mat-icon>share</mat-icon>
+          </button>
+        </div>
       </mat-toolbar>
     </div>
 

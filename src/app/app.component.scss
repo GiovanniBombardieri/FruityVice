@@ -20,3 +20,32 @@
 .spacer {
   flex: 1 1 auto;
 }
+
+.toolbar {
+  width: 100vw;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  &-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      margin-bottom: 0px;
+      margin-left: 20px;
+
+      font-size: 27px;
+    }
+  }
+
+  .favorite-icon {
+    color: rgb(174, 14, 14);
+  }
+  .share-icon {
+    color: rgb(5, 51, 132);
+  }
+}
