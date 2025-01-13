@@ -1,0 +1,48 @@
+# Dipendenze Node.js
+node_modules/
+
+# Output di build Angular
+dist/
+out-tsc/
+
+# File di configurazione del sistema operativo
+.DS_Store
+Thumbs.db
+
+# Logs e Reports
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Output temporaneo
+tmp/
+temp/
+
+# File di ambiente e chiavi sensibili
+.env
+.env.local
+.env.*.local
+
+# File generati dall'IDE o editor di testo
+.vscode/
+.idea/
+*.swp
+*.swo
+*.log
+
+# File di configurazione Angular CLI generati al volo
+.angular/
+
+# File TypeScript specifici
+*.tsbuildinfo
+
+# Configurazioni JetBrains (WebStorm, PhpStorm, ecc.)
+*.iml
+*.iws
+.idea/
+
+# Output ESLint o Prettier (se usati)
+.eslintcache
+
+# File di test
+coverage/
