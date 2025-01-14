@@ -1,0 +1,27 @@
+<div class="single-fruit-container">
+  <mat-card class="example-card" appearance="outlined">
+    <mat-card-header>
+      <mat-card-title>{{ fruit.name }}</mat-card-title>
+      <mat-card-subtitle>{{ fruit.family }}</mat-card-subtitle>
+    </mat-card-header>
+    <mat-card-content>
+      <mat-divider></mat-divider>
+      <p><strong>Genus:</strong> {{ fruit.genus }}</p>
+      <p>
+        The banana is a long, curved fruit that grows in clusters on large
+        herbaceous plants in tropical regions. With a soft, creamy texture and
+        sweet flavor, it is a rich source of energy and nutrients. Originally
+        cultivated in Southeast Asia, the banana is now a staple food worldwide.
+      </p>
+
+      <p><strong>Nutritions:</strong></p>
+      <ul>
+        <li>Calories: {{ fruit.nutritions.calories }}</li>
+        <li>Carbohydrates: {{ fruit.nutritions.carbohydrates }}</li>
+        <li>Fat: {{ fruit.nutritions.fat }}</li>
+        <li>Protein: {{ fruit.nutritions.protein }}</li>
+        <li>Sugar: {{ fruit.nutritions.sugar }}</li>
+      </ul>
+    </mat-card-content>
+  </mat-card>
+</div>

@@ -1,36 +1,132 @@
-<mat-drawer-container class="drawer-container" autosize>
-  <mat-drawer #drawer class="sidenav" mode="side">
-    <p>Auto-resizing sidenav</p>
-    @if (showFiller) {
-    <p>Lorem, ipsum dolor sit amet consectetur.</p>
-    }
-    <button (click)="showFiller = !showFiller" mat-raised-button>
-      Toggle extra text
-    </button>
+<mat-drawer-container class="drawer-container">
+  <mat-drawer class="sidenav" mode="side" opened="">
+    <!-- HOME PAGE BUTTON -->
+    <div class="lateralNav-button">
+      <button mat-icon-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="home icon"
+          fontIcon="home"
+          color="primary"
+          (click)="showHomepage = true"
+          (click)="showAllFruits = false"
+          (click)="showSingleFruit = false"
+        ></mat-icon>
+      </button>
+    </div>
+
+    <!-- ALL FRUITS BUTTON -->
+    <div class="lateralNav-button">
+      <button mat-button (click)="showAllFruits = !showAllFruits">
+        All fruits
+      </button>
+    </div>
+
+    <!-- SINGLE FRUIT BUTTON -->
+    <div class="lateralNav-button">
+      <button
+        mat-button
+        (click)="showFruits_onLateralTab = !showFruits_onLateralTab"
+      >
+        Single fruit
+      </button>
+      @if (showFruits_onLateralTab) {
+      <ul class="sidebar-fruits">
+        @for (fruit of fruits; track $index) {
+        <li>
+          <button mat-button (click)="showSingleFruit = !showSingleFruit">
+            {{ fruit.name }}
+          </button>
+        </li>
+        }
+      </ul>
+      }
+    </div>
+
+    <!-- FAMILY FRUIT BUTTON -->
+    <div class="lateralNav-button">
+      <button
+        mat-button
+        (click)="
+          showFruitFamilies_onLateralTab = !showFruitFamilies_onLateralTab
+        "
+      >
+        Fruits family
+      </button>
+      @if (showFruitFamilies_onLateralTab) {
+      <ul class="sidebar-fruits">
+        @for (fruit of fruits; track $index) {
+        <li>
+          <button mat-button>{{ fruit.family }}</button>
+        </li>
+        }
+      </ul>
+      }
+    </div>
+
+    <!-- GENUS FRUIT BUTTON -->
+    <div class="lateralNav-button">
+      <button
+        mat-button
+        (click)="showFruitGenus_onLateralTab = !showFruitGenus_onLateralTab"
+      >
+        Fruit genus
+      </button>
+      @if (showFruitGenus_onLateralTab) {
+      <ul class="sidebar-fruits">
+        @for (fruit of fruits; track $index) {
+        <li>
+          <button mat-button>{{ fruit.genus }}</button>
+        </li>
+        }
+      </ul>
+      }
+    </div>
+
+    <!-- ORDER FRUIT BUTTON -->
+    <div class="lateralNav-button">
+      <button
+        mat-button
+        (click)="showFruitOrder_onLateralTab = !showFruitOrder_onLateralTab"
+      >
+        Fruit order
+      </button>
+      @if (showFruitOrder_onLateralTab) {
+      <ul class="sidebar-fruits">
+        @for (fruit of fruits; track $index) {
+        <li>
+          <button mat-button>{{ fruit.order }}</button>
+        </li>
+        }
+      </ul>
+      }
+    </div>
+
+    <mat-divider></mat-divider>
+
+    <!-- ADD FRUIT BUTTON -->
+    <div class="addFruit-button">
+      <button mat-raised-button>
+        <mat-icon
+          aria-hidden="false"
+          aria-label="add icon"
+          fontIcon="add"
+          color="primary"
+          (click)="showHomepage = true"
+          (click)="showAllFruits = false"
+        ></mat-icon
+        >Add Fruit
+      </button>
+    </div>
   </mat-drawer>
 
   <div class="sidenav-content">
-    <div>
+    <div class="container">
       <mat-toolbar class="toolbar">
         <div class="toolbar-menu">
-          <button
-            mat-icon-button
-            class="example-icon"
-            (click)="drawer.toggle()"
-          >
-            <mat-icon>menu</mat-icon>
-          </button>
           <p>FruityVice</p>
         </div>
         <div>
-          <!-- <span class="spacer"></span> -->
-          <button
-            mat-icon-button
-            class="example-icon favorite-icon"
-            aria-label="Example icon-button with heart icon"
-          >
-            <mat-icon>favorite</mat-icon>
-          </button>
           <button
             mat-icon-button
             class="example-icon share-icon"
@@ -43,12 +139,15 @@
     </div>
 
     <div class="fruits-list">
-      <!-- FRUITS LIST-->
-      <ul>
-        @for (fruit of fruits; track $index) {
-        <li>{{ fruit.name }}</li>
-        }
-      </ul>
+      @if (showHomepage) {
+      <p style="margin: 30px">Qui ci andrà la homepage del sito</p>
+      } @if (showAllFruits) {
+      <!-- ALL FRUITS LIST-->
+      <app-all-fruits></app-all-fruits>
+      } @if (showSingleFruit) {
+      <!-- SINGLE FRUIT -->
+      <app-single-fruit></app-single-fruit>
+      }
     </div>
   </div>
 </mat-drawer-container>
