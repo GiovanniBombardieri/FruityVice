@@ -1,5 +1,27 @@
 .single-fruit-container {
   margin: 30px;
+  width: 100%;
+  height: 100%;
+
+  .header-card {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+
+    &-info {
+      width: 50%;
+    }
+
+    &-img {
+      width: 50%;
+      text-align: end;
+
+      .fruit-logo {
+        width: 60px;
+      }
+    }
+  }
 
   mat-divider {
     margin: 20px 0;
@@ -7,5 +29,14 @@
 
   .example-card {
     max-width: 400px;
+    margin-bottom: 10px;
+  }
+
+  .example-h2 {
+    margin: 10px;
+  }
+
+  .example-margin {
+    margin: 0 10px;
   }
 }

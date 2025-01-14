@@ -3,71 +3,80 @@
   min-height: 100vh;
   height: fit-content;
   border: 1px solid rgba(0, 0, 0, 0.5);
-}
 
-.sidenav-content {
-  width: 85vw;
-  display: flex;
-  flex-direction: column;
-  min-height: 100vh;
-  height: 100%;
-  align-items: baseline;
-  justify-content: baseline;
-}
+  .fruits-list {
+    width: 95%;
+    height: 90vh;
 
-.sidenav {
-  min-width: 15vw;
-  width: fit-content;
-  padding: 20px;
-  border-right: 1px solid rgba(0, 0, 0, 0.2);
-
-  .lateralNav-button {
-    margin: 10px 0;
-  }
-
-  .addFruit-button {
-    margin: 20px 0;
-  }
-
-  .sidebar-fruits {
-    list-style: none;
-    margin: 10px 0;
-  }
-}
-
-.spacer {
-  flex: 1 1 auto;
-}
-
-.container {
-  width: 100%;
-
-  .toolbar {
-    width: 100%;
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+  }
 
-    &-menu {
-      display: flex;
-      flex-direction: row;
-      justify-content: center;
-      align-items: center;
+  .sidenav-content {
+    width: 85vw;
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    height: 100%;
+    align-items: baseline;
+    justify-content: baseline;
+  }
 
-      p {
-        margin-bottom: 0px;
-        margin-left: 20px;
+  .sidenav {
+    min-width: 15vw;
+    width: fit-content;
+    padding: 20px;
+    border-right: 1px solid rgba(0, 0, 0, 0.2);
 
-        font-size: 27px;
-      }
+    .lateralNav-button {
+      margin: 10px 0;
+    }
+
+    .addFruit-button {
+      margin: 20px 0;
+    }
+
+    .sidebar-fruits {
+      list-style: none;
+      margin: 10px 0;
     }
   }
 
-  .favorite-icon {
-    color: rgb(174, 14, 14);
+  .spacer {
+    flex: 1 1 auto;
   }
-  .share-icon {
-    color: rgb(5, 51, 132);
+
+  .container {
+    width: 100%;
+
+    .toolbar {
+      width: 100%;
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
+
+      &-menu {
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        align-items: center;
+
+        p {
+          margin-bottom: 0px;
+          margin-left: 20px;
+
+          font-size: 27px;
+        }
+      }
+    }
+
+    .favorite-icon {
+      color: rgb(174, 14, 14);
+    }
+    .share-icon {
+      color: rgb(5, 51, 132);
+    }
   }
 }

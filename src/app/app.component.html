@@ -17,7 +17,12 @@
 
     <!-- ALL FRUITS BUTTON -->
     <div class="lateralNav-button">
-      <button mat-button (click)="showAllFruits = !showAllFruits">
+      <button
+        mat-button
+        (click)="showAllFruits = !showAllFruits"
+        (click)="showHomepage = !showHomepage"
+        (click)="showSingleFruit = false"
+      >
         All fruits
       </button>
     </div>
@@ -34,7 +39,13 @@
       <ul class="sidebar-fruits">
         @for (fruit of fruits; track $index) {
         <li>
-          <button mat-button (click)="showSingleFruit = !showSingleFruit">
+          <button
+            mat-button
+            (click)="selectFruit(fruit.name)"
+            (click)="showSingleFruit = !showSingleFruit"
+            (click)="showHomepage = !showHomepage"
+            (click)="showAllFruits = false"
+          >
             {{ fruit.name }}
           </button>
         </li>
@@ -146,7 +157,7 @@
       <app-all-fruits></app-all-fruits>
       } @if (showSingleFruit) {
       <!-- SINGLE FRUIT -->
-      <app-single-fruit></app-single-fruit>
+      <app-single-fruit [fruitName]="selectedFruit"></app-single-fruit>
       }
     </div>
   </div>

@@ -44,6 +44,7 @@ export class AppComponent implements OnInit {
 
   // Variables
   fruits: Fruit[] = [];
+  selectedFruit: string = "";
 
   constructor(private apiService: ApiService) {}
 
@@ -51,5 +52,9 @@ export class AppComponent implements OnInit {
     this.apiService.getAllFruits().subscribe((data: Fruit[]) => {
       this.fruits = data;
     });
+  }
+
+  selectFruit(fruitName: string): void {
+    this.selectedFruit = fruitName;
   }
 }

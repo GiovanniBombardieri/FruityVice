@@ -1,27 +1,101 @@
 <div class="single-fruit-container">
   <mat-card class="example-card" appearance="outlined">
-    <mat-card-header>
-      <mat-card-title>{{ fruit.name }}</mat-card-title>
-      <mat-card-subtitle>{{ fruit.family }}</mat-card-subtitle>
+    <mat-card-header class="header-card">
+      <div class="header-card-info">
+        <mat-card-title>{{ fruit.name }}</mat-card-title>
+        <mat-card-subtitle>{{ fruit.family }}</mat-card-subtitle>
+      </div>
+      <div class="header-card-img">
+        <img
+          [src]="'fruits/' + fruitNameCorrect + '.ico'"
+          alt="bananas"
+          class="fruit-logo"
+        />
+      </div>
     </mat-card-header>
     <mat-card-content>
       <mat-divider></mat-divider>
       <p><strong>Genus:</strong> {{ fruit.genus }}</p>
-      <p>
-        The banana is a long, curved fruit that grows in clusters on large
-        herbaceous plants in tropical regions. With a soft, creamy texture and
-        sweet flavor, it is a rich source of energy and nutrients. Originally
-        cultivated in Southeast Asia, the banana is now a staple food worldwide.
-      </p>
+      <p>{{ fruitDescription }}</p>
 
       <p><strong>Nutritions:</strong></p>
-      <ul>
-        <li>Calories: {{ fruit.nutritions.calories }}</li>
-        <li>Carbohydrates: {{ fruit.nutritions.carbohydrates }}</li>
-        <li>Fat: {{ fruit.nutritions.fat }}</li>
-        <li>Protein: {{ fruit.nutritions.protein }}</li>
-        <li>Sugar: {{ fruit.nutritions.sugar }}</li>
-      </ul>
+      <mat-card class="example-card">
+        <mat-card-content>
+          <p class="example-h2">Calories: {{ fruit.nutritions.calories }}g</p>
+
+          <section class="example-section">
+            <mat-progress-bar
+              class="example-margin"
+              [mode]="mode"
+              [value]="fruit.nutritions.calories"
+              [bufferValue]="bufferValue"
+            >
+            </mat-progress-bar>
+          </section>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="example-card">
+        <mat-card-content>
+          <p class="example-h2">
+            Carbohydrates: {{ fruit.nutritions.carbohydrates }}g
+          </p>
+
+          <section class="example-section">
+            <mat-progress-bar
+              class="example-margin"
+              [mode]="mode"
+              [value]="fruit.nutritions.carbohydrates"
+              [bufferValue]="bufferValue"
+            >
+            </mat-progress-bar>
+          </section>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="example-card">
+        <mat-card-content>
+          <p class="example-h2">Fat: {{ fruit.nutritions.fat }}g</p>
+
+          <section class="example-section">
+            <mat-progress-bar
+              class="example-margin"
+              [mode]="mode"
+              [value]="fruit.nutritions.fat"
+              [bufferValue]="bufferValue"
+            >
+            </mat-progress-bar>
+          </section>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="example-card">
+        <mat-card-content>
+          <p class="example-h2">Protein: {{ fruit.nutritions.protein }}g</p>
+
+          <section class="example-section">
+            <mat-progress-bar
+              class="example-margin"
+              [mode]="mode"
+              [value]="fruit.nutritions.protein"
+              [bufferValue]="bufferValue"
+            >
+            </mat-progress-bar>
+          </section>
+        </mat-card-content>
+      </mat-card>
+      <mat-card class="example-card">
+        <mat-card-content>
+          <p class="example-h2">Sugar: {{ fruit.nutritions.sugar }}g</p>
+
+          <section class="example-section">
+            <mat-progress-bar
+              class="example-margin"
+              [mode]="mode"
+              [value]="fruit.nutritions.sugar"
+              [bufferValue]="bufferValue"
+            >
+            </mat-progress-bar>
+          </section>
+        </mat-card-content>
+      </mat-card>
     </mat-card-content>
   </mat-card>
 </div>
