@@ -8,7 +8,7 @@
       <div class="header-card-img">
         <img
           [src]="'fruits/' + fruitNameCorrect + '.ico'"
-          alt="bananas"
+          [alt]="fruitName + 'Image'"
           class="fruit-logo"
         />
       </div>
@@ -28,7 +28,6 @@
               class="example-margin"
               [mode]="mode"
               [value]="fruit.nutritions.calories"
-              [bufferValue]="bufferValue"
             >
             </mat-progress-bar>
           </section>
@@ -45,7 +44,6 @@
               class="example-margin"
               [mode]="mode"
               [value]="fruit.nutritions.carbohydrates"
-              [bufferValue]="bufferValue"
             >
             </mat-progress-bar>
           </section>
@@ -60,7 +58,6 @@
               class="example-margin"
               [mode]="mode"
               [value]="fruit.nutritions.fat"
-              [bufferValue]="bufferValue"
             >
             </mat-progress-bar>
           </section>
@@ -75,7 +72,6 @@
               class="example-margin"
               [mode]="mode"
               [value]="fruit.nutritions.protein"
-              [bufferValue]="bufferValue"
             >
             </mat-progress-bar>
           </section>
@@ -90,7 +86,6 @@
               class="example-margin"
               [mode]="mode"
               [value]="fruit.nutritions.sugar"
-              [bufferValue]="bufferValue"
             >
             </mat-progress-bar>
           </section>

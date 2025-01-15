@@ -9,6 +9,7 @@ import { MatDividerModule } from "@angular/material/divider";
 
 import { AllFruitsComponent } from "./components/all-fruits/all-fruits.component";
 import { SingleFruitComponent } from "./components/single-fruit/single-fruit.component";
+import { FamilyFruitsComponent } from "./components/family-fruits/family-fruits.component";
 
 import { Fruit } from "./models/fruit";
 import { ApiService } from "./service/api.service.service";
@@ -19,6 +20,7 @@ import { ApiService } from "./service/api.service.service";
   imports: [
     AllFruitsComponent,
     SingleFruitComponent,
+    FamilyFruitsComponent,
     MatSidenavModule,
     MatButtonModule,
     MatToolbarModule,
@@ -41,10 +43,12 @@ export class AppComponent implements OnInit {
   showHomepage = true;
   showAllFruits = false;
   showSingleFruit = false;
+  showFruitFamily = false;
 
   // Variables
   fruits: Fruit[] = [];
-  selectedFruit: string = "";
+  selectedFruitName: string = "";
+  selectedFruitFamily: string = "";
 
   constructor(private apiService: ApiService) {}
 
@@ -54,7 +58,11 @@ export class AppComponent implements OnInit {
     });
   }
 
-  selectFruit(fruitName: string): void {
-    this.selectedFruit = fruitName;
+  selectFruitName(fruitName: string): void {
+    this.selectedFruitName = fruitName;
+  }
+
+  selectFruitFamily(fruitFamily: string): void {
+    this.selectedFruitFamily = fruitFamily;
   }
 }

@@ -11,6 +11,7 @@
           (click)="showHomepage = true"
           (click)="showAllFruits = false"
           (click)="showSingleFruit = false"
+          (click)="showFruitFamily = false"
         ></mat-icon>
       </button>
     </div>
@@ -19,9 +20,10 @@
     <div class="lateralNav-button">
       <button
         mat-button
-        (click)="showAllFruits = !showAllFruits"
-        (click)="showHomepage = !showHomepage"
+        (click)="showHomepage = false"
+        (click)="showAllFruits = true"
         (click)="showSingleFruit = false"
+        (click)="showFruitFamily = false"
       >
         All fruits
       </button>
@@ -41,10 +43,11 @@
         <li>
           <button
             mat-button
-            (click)="selectFruit(fruit.name)"
-            (click)="showSingleFruit = !showSingleFruit"
-            (click)="showHomepage = !showHomepage"
+            (click)="selectFruitName(fruit.name)"
+            (click)="showHomepage = false"
             (click)="showAllFruits = false"
+            (click)="showSingleFruit = !showSingleFruit"
+            (click)="showFruitFamily = false"
           >
             {{ fruit.name }}
           </button>
@@ -68,7 +71,16 @@
       <ul class="sidebar-fruits">
         @for (fruit of fruits; track $index) {
         <li>
-          <button mat-button>{{ fruit.family }}</button>
+          <button
+            mat-button
+            (click)="selectFruitFamily(fruit.family)"
+            (click)="showHomepage = false"
+            (click)="showAllFruits = false"
+            (click)="showSingleFruit = !showSingleFruit"
+            (click)="showFruitFamily = true"
+          >
+            {{ fruit.family }}
+          </button>
         </li>
         }
       </ul>
@@ -150,14 +162,23 @@
     </div>
 
     <div class="fruits-list">
-      @if (showHomepage) {
+      @if (showHomepage && !showAllFruits && !showSingleFruit &&
+      !showFruitFamily) {
       <p style="margin: 30px">Qui ci andrà la homepage del sito</p>
-      } @if (showAllFruits) {
+      } @if (!showHomepage && showAllFruits && !showSingleFruit &&
+      !showFruitFamily) {
       <!-- ALL FRUITS LIST-->
       <app-all-fruits></app-all-fruits>
-      } @if (showSingleFruit) {
+      } @if (!showHomepage && !showAllFruits && showSingleFruit &&
+      !showFruitFamily) {
       <!-- SINGLE FRUIT -->
-      <app-single-fruit [fruitName]="selectedFruit"></app-single-fruit>
+      <app-single-fruit [fruitName]="selectedFruitName"></app-single-fruit>
+      } @if (!showHomepage && !showAllFruits && !showSingleFruit &&
+      showFruitFamily) {
+      <!-- SINGLE FRUIT -->
+      <app-family-fruits
+        [fruitFamily]="selectedFruitFamily"
+      ></app-family-fruits>
       }
     </div>
   </div>

@@ -1,0 +1,16 @@
+.family-fruits-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  mat-grid-list {
+    width: 70vw;
+    height: fit-content;
+
+    .card {
+      width: 90%;
+      height: 90%;
+    }
+  }
+}

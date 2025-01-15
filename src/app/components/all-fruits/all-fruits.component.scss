@@ -1,0 +1,49 @@
+.all-fruits-container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+
+  mat-grid-list {
+    width: 70vw;
+    height: fit-content;
+
+    mat-grid-tile {
+      height: auto;
+
+      .card {
+        width: 90%;
+        height: 90%;
+
+        .header-card {
+          display: flex;
+          flex-direction: row;
+          justify-content: space-between;
+          align-items: center;
+
+          &-info {
+            width: 50%;
+          }
+
+          &-img {
+            width: 50%;
+            text-align: end;
+
+            .fruit-logo {
+              width: 30px;
+            }
+          }
+        }
+
+        .content-card {
+          p {
+            margin-bottom: 0;
+          }
+
+          mat-divider {
+            margin: 20px 0;
+          }
+        }
+      }
+    }
+  }
+}
