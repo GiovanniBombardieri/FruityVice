@@ -1,46 +1,4 @@
 <!-- <div class="all-fruits-container">
-  <h1>All fruits</h1>
-  <mat-grid-list cols="3" rowHeight="2:1" gutterSize="10px">
-    @for (fruit of fruits; track $index) {
-    <mat-grid-tile>
-      <mat-card class="card" appearance="outlined">
-        <mat-card-header class="header-card">
-          <div class="header-card-info">
-            <mat-card-title>{{ fruit.name }}</mat-card-title>
-            <mat-card-subtitle>{{ fruit.family }}</mat-card-subtitle>
-          </div>
-          <div class="header-card-img">
-            <img
-              [src]="'fruits/' + fruit.name + '.ico'"
-              [alt]="fruit.name + 'Image'"
-              class="fruit-logo"
-            />
-          </div>
-        </mat-card-header>
-        <mat-card-content class="content-card">
-          <mat-divider></mat-divider>
-          <p><strong>Genus:</strong> {{ fruit.genus }}</p>
-          <p><strong>Order:</strong> {{ fruit.order }}</p>
-          <br />
-          <p class=""><strong>Nutritions:</strong></p>
-          <ul>
-            <li><strong>Calories: </strong> {{ fruit.nutritions.calories }}</li>
-            <li>
-              <strong>Carbohydrates: </strong>
-              {{ fruit.nutritions.carbohydrates }}
-            </li>
-            <li><strong>Fat: </strong> {{ fruit.nutritions.fat }}</li>
-            <li><strong>Protein: </strong> {{ fruit.nutritions.protein }}</li>
-            <li><strong>Sugar: </strong> {{ fruit.nutritions.sugar }}</li>
-          </ul>
-        </mat-card-content>
-      </mat-card>
-    </mat-grid-tile>
-    }
-  </mat-grid-list>
-</div> -->
-
-<div class="all-fruits-container">
   <h1>Fruit Family</h1>
   <mat-grid-list cols="3" rowHeight="1:1">
     @for (fruit of fruits; track $index) {
@@ -65,10 +23,22 @@
           <mat-divider></mat-divider>
           <div class="header-card-vertical">
             <p><strong>Genus:</strong> {{ fruit.genus }}</p>
-            <p><strong>Order:</strong> {{ fruit.order }}</p>
+            <div class="header-card-vertical-button">
+              <p><strong>Order:</strong> {{ fruit.order }}</p>
+              <button
+                mat-icon-button
+                [id]="'button' + fruit.id"
+                class="nutritions-button"
+                (click)="toggleContentCard(fruit.id)"
+              >
+                <img src="magnifying-glass.ico" alt="" />
+              </button>
+            </div>
           </div>
         </mat-card-header>
-        <mat-card-content>
+        @if (showContentCard[fruit.id]) {
+
+        <mat-card-content [id]="fruit.id">
           <p class="content-card"><strong>Nutritions:</strong></p>
           <ul>
             <li><strong>Calories: </strong> {{ fruit.nutritions.calories }}</li>
@@ -81,8 +51,120 @@
             <li><strong>Sugar: </strong> {{ fruit.nutritions.sugar }}</li>
           </ul>
         </mat-card-content>
+
+        }
       </mat-card>
     </mat-grid-tile>
     }
   </mat-grid-list>
+</div> -->
+
+<div class="container">
+  <mat-form-field>
+    <mat-label>Filter</mat-label>
+    <input
+      matInput
+      (keyup)="applyFilter($event)"
+      placeholder="Ex. ium"
+      #input
+    />
+  </mat-form-field>
+
+  <table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="img">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-button>
+          <img
+            [src]="'fruits/' + element.name + '.ico'"
+            [alt]="element.name + 'Image'"
+            class="fruit-logo"
+          />
+        </button>
+      </td>
+    </ng-container>
+
+    <!-- Name Column -->
+    <ng-container matColumnDef="name">
+      <th mat-header-cell *matHeaderCellDef>Name</th>
+      <td mat-cell *matCellDef="let element">{{ element.name }}</td>
+    </ng-container>
+
+    <!-- Family Column -->
+    <ng-container matColumnDef="family">
+      <th mat-header-cell *matHeaderCellDef>Weight</th>
+      <td mat-cell *matCellDef="let element">{{ element.family }}</td>
+    </ng-container>
+
+    <!-- Order Column -->
+    <ng-container matColumnDef="order">
+      <th mat-header-cell *matHeaderCellDef>Order</th>
+      <td mat-cell *matCellDef="let element">{{ element.order }}</td>
+    </ng-container>
+
+    <!-- Genus Column -->
+    <ng-container matColumnDef="genus">
+      <th mat-header-cell *matHeaderCellDef>Genus</th>
+      <td mat-cell *matCellDef="let element">{{ element.genus }}</td>
+    </ng-container>
+
+    <!-- Plus Column -->
+    <ng-container matColumnDef="plus">
+      <th mat-header-cell *matHeaderCellDef></th>
+      <td mat-cell *matCellDef="let element">
+        <button mat-icon-button><mat-icon>arrow_forward</mat-icon></button>
+      </td>
+    </ng-container>
+
+    <!-- Calories Column -->
+    <ng-container matColumnDef="calories">
+      <th mat-header-cell *matHeaderCellDef>Calories</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.nutritions.calories }}
+      </td>
+    </ng-container>
+
+    <!-- Carbohydrates Column -->
+    <ng-container matColumnDef="carbohydrates">
+      <th mat-header-cell *matHeaderCellDef>Carbohydrates</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.nutritions.carbohydrates }}
+      </td>
+    </ng-container>
+
+    <!-- Fat Column -->
+    <ng-container matColumnDef="fat">
+      <th mat-header-cell *matHeaderCellDef>Fat</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.nutritions.fat }}
+      </td>
+    </ng-container>
+
+    <!-- Protein Column -->
+    <ng-container matColumnDef="protein">
+      <th mat-header-cell *matHeaderCellDef>Protein</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.nutritions.protein }}
+      </td>
+    </ng-container>
+
+    <!-- Sugar Column -->
+    <ng-container matColumnDef="sugar">
+      <th mat-header-cell *matHeaderCellDef>Sugar</th>
+      <td mat-cell *matCellDef="let element">
+        {{ element.nutritions.sugar }}
+      </td>
+    </ng-container>
+
+    <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns"></tr>
+
+    <!-- Row shown when there is no matching data. -->
+    <tr class="mat-row" *matNoDataRow>
+      <td class="mat-cell" colspan="4">
+        No data matching the filter "{{ input.value }}"
+      </td>
+    </tr>
+  </table>
 </div>
