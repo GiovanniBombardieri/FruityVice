@@ -5,8 +5,8 @@
   border: 1px solid rgba(0, 0, 0, 0.5);
 
   .fruits-list {
-    width: 99%;
-    min-height: 93vh;
+    width: 100%;
+    min-height: 100vh;
     height: max-content;
 
     display: flex;
@@ -14,6 +14,8 @@
     align-items: center;
 
     background-color: rgba(0, 0, 0, 0.02);
+    // background: url(/assets/img/fruitBg2.jpg);
+    // background-size: 100%;
   }
 
   .sidenav-content {
@@ -60,6 +62,9 @@
       flex-direction: row;
       justify-content: space-between;
       align-items: center;
+
+      background-color: rgb(12 74 110 / var(--tw-bg-opacity, 1));
+      color: #fff;
 
       &-menu {
         display: flex;

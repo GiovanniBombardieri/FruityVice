@@ -13,6 +13,7 @@
           (click)="showSingleFruit = false"
           (click)="showFruitFamily = false"
           (click)="showFruitGenus = false"
+          (click)="showFruitOrder = false"
         ></mat-icon>
       </button>
     </div>
@@ -26,6 +27,7 @@
         (click)="showSingleFruit = false"
         (click)="showFruitFamily = false"
         (click)="showFruitGenus = false"
+        (click)="showFruitOrder = false"
       >
         All fruits
       </button>
@@ -51,6 +53,7 @@
             (click)="showSingleFruit = !showSingleFruit"
             (click)="showFruitFamily = false"
             (click)="showFruitGenus = false"
+            (click)="showFruitOrder = false"
           >
             {{ fruit.name }}
           </button>
@@ -82,6 +85,7 @@
             (click)="showSingleFruit = false"
             (click)="showFruitFamily = !showFruitFamily"
             (click)="showFruitGenus = false"
+            (click)="showFruitOrder = false"
           >
             {{ fruit.family }}
           </button>
@@ -111,6 +115,7 @@
             (click)="showSingleFruit = false"
             (click)="showFruitFamily = false"
             (click)="showFruitGenus = !showFruitGenus"
+            (click)="showFruitOrder = false"
           >
             {{ fruit.genus }}
           </button>
@@ -132,7 +137,18 @@
       <ul class="sidebar-fruits">
         @for (fruit of fruits; track $index) {
         <li>
-          <button mat-button>{{ fruit.order }}</button>
+          <button
+            mat-button
+            (click)="selectFruitOrder(fruit.order)"
+            (click)="showHomepage = false"
+            (click)="showAllFruits = false"
+            (click)="showSingleFruit = false"
+            (click)="showFruitFamily = false"
+            (click)="showFruitGenus = false"
+            (click)="showFruitOrder = !showFruitOrder"
+          >
+            {{ fruit.order }}
+          </button>
         </li>
         }
       </ul>
@@ -181,26 +197,30 @@
 
     <div class="fruits-list">
       @if (showHomepage && !showAllFruits && !showSingleFruit &&
-      !showFruitFamily && !showFruitGenus) {
+      !showFruitFamily && !showFruitGenus && !showFruitOrder) {
       <app-homepage></app-homepage>
       } @if (!showHomepage && showAllFruits && !showSingleFruit &&
-      !showFruitFamily && !showFruitGenus) {
+      !showFruitFamily && !showFruitGenus && !showFruitOrder) {
       <!-- ALL FRUITS LIST-->
       <app-all-fruits></app-all-fruits>
       } @if (!showHomepage && !showAllFruits && showSingleFruit &&
-      !showFruitFamily && !showFruitGenus) {
+      !showFruitFamily && !showFruitGenus && !showFruitOrder) {
       <!-- SINGLE FRUIT -->
       <app-single-fruit [fruitName]="selectedFruitName"></app-single-fruit>
       } @if (!showHomepage && !showAllFruits && !showSingleFruit &&
-      showFruitFamily && !showFruitGenus) {
+      showFruitFamily && !showFruitGenus && !showFruitOrder) {
       <!-- FAMILY FRUIT -->
       <app-family-fruits
         [fruitFamily]="selectedFruitFamily"
       ></app-family-fruits>
       } @if (!showHomepage && !showAllFruits && !showSingleFruit &&
-      !showFruitFamily && showFruitGenus) {
+      !showFruitFamily && showFruitGenus && !showFruitOrder) {
       <!-- GENUS FRUIT -->
       <app-genus-fruits [fruitGenus]="selectedFruitGenus"></app-genus-fruits>
+      } @if (!showHomepage && !showAllFruits && !showSingleFruit &&
+      !showFruitFamily && !showFruitGenus && showFruitOrder) {
+      <!-- ORDER FRUIT -->
+      <app-order-fruits [fruitOrder]="selectedFruitOrder"></app-order-fruits>
       }
     </div>
   </div>

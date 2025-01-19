@@ -26,4 +26,8 @@ export class ApiService {
   getFruitsByGenus(genus: string): Observable<any> {
     return this.http.get<Fruit[]>(`${this.baseUrl}/fruit/genus/${genus}`);
   }
+
+  getFruitsByOrder(order: string): Observable<Fruit[]> {
+    return this.http.get<Fruit[]>(`${this.baseUrl}/fruit/order/${order}`);
+  }
 }

@@ -10,6 +10,7 @@ import { AllFruitsComponent } from "./components/all-fruits/all-fruits.component
 import { SingleFruitComponent } from "./components/single-fruit/single-fruit.component";
 import { FamilyFruitsComponent } from "./components/family-fruits/family-fruits.component";
 import { GenusFruitsComponent } from "./components/genus-fruits/genus-fruits.component";
+import { OrderFruitsComponent } from "./components/order-fruits/order-fruits.component";
 
 import { Fruit } from "./models/fruit";
 import { ApiService } from "./service/api.service.service";
@@ -23,6 +24,7 @@ import { HomepageComponent } from "./components/homepage/homepage.component";
     SingleFruitComponent,
     FamilyFruitsComponent,
     GenusFruitsComponent,
+    OrderFruitsComponent,
     MatSidenavModule,
     MatButtonModule,
     MatToolbarModule,
@@ -48,12 +50,14 @@ export class AppComponent implements OnInit {
   showSingleFruit = false;
   showFruitFamily = false;
   showFruitGenus = false;
+  showFruitOrder = false;
 
   // Variables
   fruits: Fruit[] = [];
   selectedFruitName: string = "";
   selectedFruitFamily: string = "";
   selectedFruitGenus: string = "";
+  selectedFruitOrder: string = "";
 
   // Received Data
   receivedData: string = "";
@@ -80,5 +84,9 @@ export class AppComponent implements OnInit {
 
   selectFruitGenus(fruitGenus: string): void {
     this.selectedFruitGenus = fruitGenus;
+  }
+
+  selectFruitOrder(fruitOrder: string): void {
+    this.selectedFruitOrder = fruitOrder;
   }
 }
