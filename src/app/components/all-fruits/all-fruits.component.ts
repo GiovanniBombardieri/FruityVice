@@ -1,4 +1,4 @@
-import { Component, OnInit } from "@angular/core";
+import { Component, OnInit, EventEmitter, Output } from "@angular/core";
 
 import { ApiService } from "../../service/api.service.service";
 import { Fruit } from "../../models/fruit";
@@ -33,6 +33,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
   styleUrl: "./all-fruits.component.scss",
 })
 export class AllFruitsComponent implements OnInit {
+  @Output() dataEmitter = new EventEmitter<string>();
+
   fruits: Fruit[] = [];
   fruitsNames: string[] = [];
   fruitData = fruitDescription;
@@ -64,6 +66,10 @@ export class AllFruitsComponent implements OnInit {
 
   ngOnInit(): void {
     this.seeAllFruits();
+  }
+
+  sendData(fruitName: string) {
+    this.dataEmitter.emit(fruitName);
   }
 
   toggleContentCard(fruitId: number): void {

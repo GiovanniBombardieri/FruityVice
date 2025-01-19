@@ -23,21 +23,9 @@
           <mat-divider></mat-divider>
           <div class="header-card-vertical">
             <p><strong>Genus:</strong> {{ fruit.genus }}</p>
-            <div class="header-card-vertical-button">
-              <p><strong>Order:</strong> {{ fruit.order }}</p>
-              <button
-                mat-icon-button
-                [id]="'button' + fruit.id"
-                class="nutritions-button"
-                (click)="toggleContentCard(fruit.id)"
-              >
-                <img src="magnifying-glass.ico" alt="" />
-              </button>
-            </div>
+            <p><strong>Order:</strong> {{ fruit.order }}</p>
           </div>
         </mat-card-header>
-        @if (showContentCard[fruit.id]) {
-
         <mat-card-content [id]="fruit.id">
           <p class="content-card"><strong>Nutritions:</strong></p>
           <ul>
@@ -51,8 +39,6 @@
             <li><strong>Sugar: </strong> {{ fruit.nutritions.sugar }}</li>
           </ul>
         </mat-card-content>
-
-        }
       </mat-card>
     </mat-grid-tile>
     }
@@ -75,7 +61,7 @@
     <ng-container matColumnDef="img">
       <th mat-header-cell *matHeaderCellDef></th>
       <td mat-cell *matCellDef="let element">
-        <button mat-button>
+        <button mat-button (click)="sendData(element.name)">
           <img
             [src]="'fruits/' + element.name + '.ico'"
             [alt]="element.name + 'Image'"

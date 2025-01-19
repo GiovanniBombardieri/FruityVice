@@ -12,6 +12,7 @@
           (click)="showAllFruits = false"
           (click)="showSingleFruit = false"
           (click)="showFruitFamily = false"
+          (click)="showFruitGenus = false"
         ></mat-icon>
       </button>
     </div>
@@ -24,6 +25,7 @@
         (click)="showAllFruits = true"
         (click)="showSingleFruit = false"
         (click)="showFruitFamily = false"
+        (click)="showFruitGenus = false"
       >
         All fruits
       </button>
@@ -48,6 +50,7 @@
             (click)="showAllFruits = false"
             (click)="showSingleFruit = !showSingleFruit"
             (click)="showFruitFamily = false"
+            (click)="showFruitGenus = false"
           >
             {{ fruit.name }}
           </button>
@@ -76,8 +79,9 @@
             (click)="selectFruitFamily(fruit.family)"
             (click)="showHomepage = false"
             (click)="showAllFruits = false"
-            (click)="showSingleFruit = !showSingleFruit"
-            (click)="showFruitFamily = true"
+            (click)="showSingleFruit = false"
+            (click)="showFruitFamily = !showFruitFamily"
+            (click)="showFruitGenus = false"
           >
             {{ fruit.family }}
           </button>
@@ -99,7 +103,17 @@
       <ul class="sidebar-fruits">
         @for (fruit of fruits; track $index) {
         <li>
-          <button mat-button>{{ fruit.genus }}</button>
+          <button
+            mat-button
+            (click)="selectFruitGenus(fruit.genus)"
+            (click)="showHomepage = false"
+            (click)="showAllFruits = false"
+            (click)="showSingleFruit = false"
+            (click)="showFruitFamily = false"
+            (click)="showFruitGenus = !showFruitGenus"
+          >
+            {{ fruit.genus }}
+          </button>
         </li>
         }
       </ul>
@@ -144,6 +158,8 @@
   </mat-drawer>
 
   <div class="sidenav-content">
+    @if (!showHomepage) {
+
     <div class="container">
       <mat-toolbar class="toolbar">
         <div class="toolbar-menu">
@@ -161,24 +177,30 @@
       </mat-toolbar>
     </div>
 
+    }
+
     <div class="fruits-list">
       @if (showHomepage && !showAllFruits && !showSingleFruit &&
-      !showFruitFamily) {
-      <p style="margin: 30px">Qui ci andrà la homepage del sito</p>
+      !showFruitFamily && !showFruitGenus) {
+      <app-homepage></app-homepage>
       } @if (!showHomepage && showAllFruits && !showSingleFruit &&
-      !showFruitFamily) {
+      !showFruitFamily && !showFruitGenus) {
       <!-- ALL FRUITS LIST-->
       <app-all-fruits></app-all-fruits>
       } @if (!showHomepage && !showAllFruits && showSingleFruit &&
-      !showFruitFamily) {
+      !showFruitFamily && !showFruitGenus) {
       <!-- SINGLE FRUIT -->
       <app-single-fruit [fruitName]="selectedFruitName"></app-single-fruit>
       } @if (!showHomepage && !showAllFruits && !showSingleFruit &&
-      showFruitFamily) {
-      <!-- SINGLE FRUIT -->
+      showFruitFamily && !showFruitGenus) {
+      <!-- FAMILY FRUIT -->
       <app-family-fruits
         [fruitFamily]="selectedFruitFamily"
       ></app-family-fruits>
+      } @if (!showHomepage && !showAllFruits && !showSingleFruit &&
+      !showFruitFamily && showFruitGenus) {
+      <!-- GENUS FRUIT -->
+      <app-genus-fruits [fruitGenus]="selectedFruitGenus"></app-genus-fruits>
       }
     </div>
   </div>

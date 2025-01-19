@@ -47,9 +47,9 @@ export class SingleFruitComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.fruitNameCorrect = this.checkFruitName(this.fruitName);
-    console.log(this.fruitNameCorrect);
+    console.log(this.fruitName);
 
+    this.fruitNameCorrect = this.checkFruitName(this.fruitName);
     this.seeSingleFuit();
     this.checkFruitDescription(this.fruitNameCorrect);
   }

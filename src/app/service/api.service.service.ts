@@ -22,4 +22,8 @@ export class ApiService {
   getFruitsByFamily(family: string): Observable<any> {
     return this.http.get<Fruit[]>(`${this.baseUrl}/fruit/family/${family}`);
   }
+
+  getFruitsByGenus(genus: string): Observable<any> {
+    return this.http.get<Fruit[]>(`${this.baseUrl}/fruit/genus/${genus}`);
+  }
 }

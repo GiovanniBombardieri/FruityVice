@@ -1,17 +1,3 @@
-$color-map: (
-  "Persimmon": #ff5733,
-  "Banana": #f8ff33,
-  "Blackberry": rgb(99, 51, 255),
-);
-
-@function get-color($name) {
-  @if map-has-key($color-map, $name) {
-    @return map-get($color-map, $name);
-  } @else {
-    @return #000; // Colore di default se il nome non esiste
-  }
-}
-
 .all-fruits-container {
   display: flex;
   flex-direction: column;
@@ -127,13 +113,17 @@ $color-map: (
   table {
     width: 70vw;
 
+    .mat-mdc-cell {
+      font-size: 18px;
+    }
+
     .fruit-logo {
-      width: 20px;
+      width: 40px;
     }
   }
 
   .mat-mdc-form-field {
-    font-size: 14px;
+    font-size: 4px;
     width: 100%;
   }
 }

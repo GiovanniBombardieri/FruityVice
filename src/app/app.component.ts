@@ -1,5 +1,4 @@
 import { Component, OnInit } from "@angular/core";
-import { RouterOutlet } from "@angular/router";
 
 import { MatSidenavModule } from "@angular/material/sidenav";
 import { MatButtonModule } from "@angular/material/button";
@@ -10,9 +9,11 @@ import { MatDividerModule } from "@angular/material/divider";
 import { AllFruitsComponent } from "./components/all-fruits/all-fruits.component";
 import { SingleFruitComponent } from "./components/single-fruit/single-fruit.component";
 import { FamilyFruitsComponent } from "./components/family-fruits/family-fruits.component";
+import { GenusFruitsComponent } from "./components/genus-fruits/genus-fruits.component";
 
 import { Fruit } from "./models/fruit";
 import { ApiService } from "./service/api.service.service";
+import { HomepageComponent } from "./components/homepage/homepage.component";
 
 @Component({
   selector: "app-root",
@@ -21,11 +22,13 @@ import { ApiService } from "./service/api.service.service";
     AllFruitsComponent,
     SingleFruitComponent,
     FamilyFruitsComponent,
+    GenusFruitsComponent,
     MatSidenavModule,
     MatButtonModule,
     MatToolbarModule,
     MatIconModule,
     MatDividerModule,
+    HomepageComponent,
   ],
   templateUrl: "./app.component.html",
   styleUrl: "./app.component.scss",
@@ -44,11 +47,16 @@ export class AppComponent implements OnInit {
   showAllFruits = false;
   showSingleFruit = false;
   showFruitFamily = false;
+  showFruitGenus = false;
 
   // Variables
   fruits: Fruit[] = [];
   selectedFruitName: string = "";
   selectedFruitFamily: string = "";
+  selectedFruitGenus: string = "";
+
+  // Received Data
+  receivedData: string = "";
 
   constructor(private apiService: ApiService) {}
 
@@ -58,11 +66,19 @@ export class AppComponent implements OnInit {
     });
   }
 
+  handleData(fruitName: string) {
+    this.receivedData = fruitName;
+  }
+
   selectFruitName(fruitName: string): void {
     this.selectedFruitName = fruitName;
   }
 
   selectFruitFamily(fruitFamily: string): void {
     this.selectedFruitFamily = fruitFamily;
+  }
+
+  selectFruitGenus(fruitGenus: string): void {
+    this.selectedFruitGenus = fruitGenus;
   }
 }
