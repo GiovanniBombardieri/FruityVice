@@ -15,8 +15,8 @@ export class ApiService {
     return this.http.get<Fruit[]>(`${this.baseUrl}/fruit/all`);
   }
 
-  getSingleFruit(name: string): Observable<any> {
-    return this.http.get<Fruit>(`${this.baseUrl}/fruit/${name}`);
+  getSingleFruit(id: number): Observable<any> {
+    return this.http.get<Fruit>(`${this.baseUrl}/fruit/${id}`);
   }
 
   getFruitsByFamily(family: string): Observable<any> {

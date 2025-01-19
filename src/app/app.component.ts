@@ -55,6 +55,7 @@ export class AppComponent implements OnInit {
   // Variables
   fruits: Fruit[] = [];
   selectedFruitName: string = "";
+  selectedFruitId: number = 0;
   selectedFruitFamily: string = "";
   selectedFruitGenus: string = "";
   selectedFruitOrder: string = "";
@@ -76,6 +77,10 @@ export class AppComponent implements OnInit {
 
   selectFruitName(fruitName: string): void {
     this.selectedFruitName = fruitName;
+  }
+
+  selectFruitId(fruitId: number): void {
+    this.selectedFruitId = fruitId;
   }
 
   selectFruitFamily(fruitFamily: string): void {

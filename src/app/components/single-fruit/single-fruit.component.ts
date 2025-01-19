@@ -35,11 +35,13 @@ import { MatRadioModule } from "@angular/material/radio";
   styleUrl: "./single-fruit.component.scss",
 })
 export class SingleFruitComponent implements OnInit {
+  @Input() fruitId: number = 0; // Ricevo l'id del frutto singolo
   @Input() fruitName: string = ""; // Ricevo il nome del frutto singolo
   fruitNameCorrect: string = "";
   fruit!: Fruit;
   fruitData = fruitDescription;
   fruitDescription: string = "";
+  fruitColor: string = "";
 
   mode: ProgressBarMode = "determinate";
   value = 50;
@@ -47,15 +49,13 @@ export class SingleFruitComponent implements OnInit {
   constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    console.log(this.fruitName);
-
     this.fruitNameCorrect = this.checkFruitName(this.fruitName);
     this.seeSingleFuit();
     this.checkFruitDescription(this.fruitNameCorrect);
   }
 
   seeSingleFuit(): void {
-    this.apiService.getSingleFruit(this.fruitName).subscribe((data: Fruit) => {
+    this.apiService.getSingleFruit(this.fruitId).subscribe((data: Fruit) => {
       this.fruit = data;
     });
   }
@@ -64,6 +64,8 @@ export class SingleFruitComponent implements OnInit {
     Object.entries(this.fruitData).forEach(([key, value]) => {
       if (key === fruitName) {
         this.fruitDescription = value.description;
+        this.fruitColor = value.color;
+        console.log(this.fruitColor);
       }
     });
   }

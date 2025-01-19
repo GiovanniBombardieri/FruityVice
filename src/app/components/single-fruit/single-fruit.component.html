@@ -1,5 +1,12 @@
-<div class="single-fruit-container">
-  <mat-card class="example-card" appearance="outlined">
+<div
+  class="single-fruit-container"
+  [style]="'background: url(fruits/' + fruitNameCorrect + '.ico)'"
+>
+  <mat-card
+    class="example-card"
+    appearance="outlined"
+    [style]="'border: 5px solid ' + fruitColor + ';'"
+  >
     <mat-card-header class="header-card">
       <div class="header-card-info">
         <mat-card-title>{{ fruit.name }}</mat-card-title>

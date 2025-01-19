@@ -47,6 +47,7 @@
         <li>
           <button
             mat-button
+            (click)="selectFruitId(fruit.id)"
             (click)="selectFruitName(fruit.name)"
             (click)="showHomepage = false"
             (click)="showAllFruits = false"
@@ -206,7 +207,10 @@
       } @if (!showHomepage && !showAllFruits && showSingleFruit &&
       !showFruitFamily && !showFruitGenus && !showFruitOrder) {
       <!-- SINGLE FRUIT -->
-      <app-single-fruit [fruitName]="selectedFruitName"></app-single-fruit>
+      <app-single-fruit
+        [fruitId]="selectedFruitId"
+        [fruitName]="selectedFruitName"
+      ></app-single-fruit>
       } @if (!showHomepage && !showAllFruits && !showSingleFruit &&
       showFruitFamily && !showFruitGenus && !showFruitOrder) {
       <!-- FAMILY FRUIT -->
