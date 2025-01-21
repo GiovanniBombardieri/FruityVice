@@ -11,7 +11,6 @@ import { MatButtonModule } from "@angular/material/button";
 import { MatIconModule } from "@angular/material/icon";
 import { MatPaginatorModule } from "@angular/material/paginator";
 
-import { MatTableDataSource, MatTableModule } from "@angular/material/table";
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
 
@@ -27,7 +26,6 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
-    MatTableModule,
   ],
   templateUrl: "./all-fruits.component.html",
   styleUrl: "./all-fruits.component.scss",
@@ -36,30 +34,18 @@ export class AllFruitsComponent implements OnInit {
   @Output() dataEmitter = new EventEmitter<string>();
 
   fruits: Fruit[] = [];
+  filteredFruits: Fruit[] = [];
   fruitsNames: string[] = [];
   fruitData = fruitDescription;
   isHovered: boolean = false;
   showContentCard: { [key: number]: boolean } = {};
 
-  // TABLE
-  displayedColumns: string[] = [
-    "img",
-    "name",
-    "family",
-    "order",
-    "genus",
-    // "plus",
-    // "calories",
-    // "carbohydrates",
-    // "fat",
-    // "protein",
-    // "sugar",
-  ];
-  dataSource: any;
-
   applyFilter(event: Event) {
-    const filterValue = (event.target as HTMLInputElement).value;
-    this.dataSource.filter = filterValue.trim().toLowerCase();
+    const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
+
+    this.filteredFruits = this.fruits.filter((fruit) =>
+      fruit.name.toLowerCase().includes(filterValue)
+    );
   }
 
   constructor(private apiService: ApiService) {}
@@ -79,7 +65,7 @@ export class AllFruitsComponent implements OnInit {
   seeAllFruits(): void {
     this.apiService.getAllFruits().subscribe((data: Fruit[]) => {
       this.fruits = data;
-      this.dataSource = new MatTableDataSource(data);
+      this.filteredFruits = [...this.fruits];
 
       this.fruits.forEach((value) => {
         this.fruitsNames.push(value.name);
@@ -87,11 +73,10 @@ export class AllFruitsComponent implements OnInit {
     });
   }
 
-  // checkFruitColor(): void {
-  //   Object.entries(this.fruitData).forEach(([key, value]) => {
-  //     if (this.fruitsNames.includes(key)) {
-  //       console.log(key);
-  //     }
-  //   });
-  // }
+  getFruitColor(fruitName: string): string {
+    return (
+      (this.fruitData as Record<string, { color: string }>)[fruitName]?.color ||
+      "Color not found"
+    );
+  }
 }
