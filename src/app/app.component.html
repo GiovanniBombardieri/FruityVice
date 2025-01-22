@@ -1,231 +1,26 @@
 <mat-drawer-container class="drawer-container">
-  <mat-drawer class="sidenav" mode="side" opened="">
-    <!-- HOME PAGE BUTTON -->
-    <div class="lateralNav-button">
-      <button mat-icon-button>
-        <mat-icon
-          aria-hidden="false"
-          aria-label="home icon"
-          fontIcon="home"
-          color="primary"
-          (click)="showHomepage = true"
-          (click)="showAllFruits = false"
-          (click)="showSingleFruit = false"
-          (click)="showFruitFamily = false"
-          (click)="showFruitGenus = false"
-          (click)="showFruitOrder = false"
-        ></mat-icon>
-      </button>
+  <mat-toolbar class="toolbar">
+    <div class="toolbar-menu">
+      <p>FruityVice</p>
     </div>
-
-    <!-- ALL FRUITS BUTTON -->
-    <div class="lateralNav-button">
+    <div>
       <button
-        mat-button
-        (click)="showHomepage = false"
-        (click)="showAllFruits = true"
-        (click)="showSingleFruit = false"
-        (click)="showFruitFamily = false"
-        (click)="showFruitGenus = false"
-        (click)="showFruitOrder = false"
+        mat-icon-button
+        class="example-icon share-icon"
+        aria-label="Example icon-button with share icon"
       >
-        All fruits
+        <mat-icon>share</mat-icon>
       </button>
     </div>
+  </mat-toolbar>
 
-    <!-- SINGLE FRUIT BUTTON -->
-    <div class="lateralNav-button">
-      <button
-        mat-button
-        (click)="showFruits_onLateralTab = !showFruits_onLateralTab"
-      >
-        Single fruit
-      </button>
-      @if (showFruits_onLateralTab) {
-      <ul class="sidebar-fruits">
-        @for (fruit of fruits; track $index) {
-        <li>
-          <button
-            mat-button
-            (click)="selectFruitId(fruit.id)"
-            (click)="selectFruitName(fruit.name)"
-            (click)="showHomepage = false"
-            (click)="showAllFruits = false"
-            (click)="showSingleFruit = !showSingleFruit"
-            (click)="showFruitFamily = false"
-            (click)="showFruitGenus = false"
-            (click)="showFruitOrder = false"
-          >
-            {{ fruit.name }}
-          </button>
-        </li>
-        }
-      </ul>
-      }
-    </div>
-
-    <!-- FAMILY FRUIT BUTTON -->
-    <div class="lateralNav-button">
-      <button
-        mat-button
-        (click)="
-          showFruitFamilies_onLateralTab = !showFruitFamilies_onLateralTab
-        "
-      >
-        Fruits family
-      </button>
-      @if (showFruitFamilies_onLateralTab) {
-      <ul class="sidebar-fruits">
-        @for (fruit of fruits; track $index) {
-        <li>
-          <button
-            mat-button
-            (click)="selectFruitFamily(fruit.family)"
-            (click)="showHomepage = false"
-            (click)="showAllFruits = false"
-            (click)="showSingleFruit = false"
-            (click)="showFruitFamily = !showFruitFamily"
-            (click)="showFruitGenus = false"
-            (click)="showFruitOrder = false"
-          >
-            {{ fruit.family }}
-          </button>
-        </li>
-        }
-      </ul>
-      }
-    </div>
-
-    <!-- GENUS FRUIT BUTTON -->
-    <div class="lateralNav-button">
-      <button
-        mat-button
-        (click)="showFruitGenus_onLateralTab = !showFruitGenus_onLateralTab"
-      >
-        Fruit genus
-      </button>
-      @if (showFruitGenus_onLateralTab) {
-      <ul class="sidebar-fruits">
-        @for (fruit of fruits; track $index) {
-        <li>
-          <button
-            mat-button
-            (click)="selectFruitGenus(fruit.genus)"
-            (click)="showHomepage = false"
-            (click)="showAllFruits = false"
-            (click)="showSingleFruit = false"
-            (click)="showFruitFamily = false"
-            (click)="showFruitGenus = !showFruitGenus"
-            (click)="showFruitOrder = false"
-          >
-            {{ fruit.genus }}
-          </button>
-        </li>
-        }
-      </ul>
-      }
-    </div>
-
-    <!-- ORDER FRUIT BUTTON -->
-    <div class="lateralNav-button">
-      <button
-        mat-button
-        (click)="showFruitOrder_onLateralTab = !showFruitOrder_onLateralTab"
-      >
-        Fruit order
-      </button>
-      @if (showFruitOrder_onLateralTab) {
-      <ul class="sidebar-fruits">
-        @for (fruit of fruits; track $index) {
-        <li>
-          <button
-            mat-button
-            (click)="selectFruitOrder(fruit.order)"
-            (click)="showHomepage = false"
-            (click)="showAllFruits = false"
-            (click)="showSingleFruit = false"
-            (click)="showFruitFamily = false"
-            (click)="showFruitGenus = false"
-            (click)="showFruitOrder = !showFruitOrder"
-          >
-            {{ fruit.order }}
-          </button>
-        </li>
-        }
-      </ul>
-      }
-    </div>
-
-    <mat-divider></mat-divider>
-
-    <!-- ADD FRUIT BUTTON -->
-    <div class="addFruit-button">
-      <button mat-raised-button>
-        <mat-icon
-          aria-hidden="false"
-          aria-label="add icon"
-          fontIcon="add"
-          color="primary"
-          (click)="showHomepage = true"
-          (click)="showAllFruits = false"
-        ></mat-icon
-        >Add Fruit
-      </button>
-    </div>
-  </mat-drawer>
-
-  <div class="sidenav-content">
-    @if (!showHomepage) {
-
-    <div class="container">
-      <mat-toolbar class="toolbar">
-        <div class="toolbar-menu">
-          <p>FruityVice</p>
-        </div>
-        <div>
-          <button
-            mat-icon-button
-            class="example-icon share-icon"
-            aria-label="Example icon-button with share icon"
-          >
-            <mat-icon>share</mat-icon>
-          </button>
-        </div>
-      </mat-toolbar>
-    </div>
-
-    }
-
-    <div class="fruits-list">
-      @if (showHomepage && !showAllFruits && !showSingleFruit &&
-      !showFruitFamily && !showFruitGenus && !showFruitOrder) {
-      <app-homepage></app-homepage>
-      } @if (!showHomepage && showAllFruits && !showSingleFruit &&
-      !showFruitFamily && !showFruitGenus && !showFruitOrder) {
-      <!-- ALL FRUITS LIST-->
+  <div class="main-container">
+    <div class="main-container-body">
       <app-all-fruits></app-all-fruits>
-      } @if (!showHomepage && !showAllFruits && showSingleFruit &&
-      !showFruitFamily && !showFruitGenus && !showFruitOrder) {
-      <!-- SINGLE FRUIT -->
-      <app-single-fruit
-        [fruitId]="selectedFruitId"
-        [fruitName]="selectedFruitName"
-      ></app-single-fruit>
-      } @if (!showHomepage && !showAllFruits && !showSingleFruit &&
-      showFruitFamily && !showFruitGenus && !showFruitOrder) {
-      <!-- FAMILY FRUIT -->
-      <app-family-fruits
-        [fruitFamily]="selectedFruitFamily"
-      ></app-family-fruits>
-      } @if (!showHomepage && !showAllFruits && !showSingleFruit &&
-      !showFruitFamily && showFruitGenus && !showFruitOrder) {
-      <!-- GENUS FRUIT -->
-      <app-genus-fruits [fruitGenus]="selectedFruitGenus"></app-genus-fruits>
-      } @if (!showHomepage && !showAllFruits && !showSingleFruit &&
-      !showFruitFamily && !showFruitGenus && showFruitOrder) {
-      <!-- ORDER FRUIT -->
-      <app-order-fruits [fruitOrder]="selectedFruitOrder"></app-order-fruits>
-      }
+    </div>
+
+    <div class="footer">
+      <p>Questo è il footer</p>
     </div>
   </div>
 </mat-drawer-container>

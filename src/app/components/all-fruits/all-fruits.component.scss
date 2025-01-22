@@ -1,5 +1,5 @@
 .container {
-  width: 80vw;
+  width: inherit;
   height: 100vh;
 
   &-filter {
@@ -7,42 +7,59 @@
     justify-content: center;
     align-items: center;
 
-    height: 40%;
+    position: relative;
+    overflow: hidden;
+
+    height: 60%;
     width: 100%;
-    margin-top: 5px;
+
     margin-bottom: 30px;
 
-    border-top: 2px solid black;
-    border-bottom: 2px solid black;
+    video {
+      width: 100vw;
+      height: 100%;
+      object-fit: cover;
+
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
 
     .filter {
+      z-index: 2;
       width: 80%;
     }
   }
 
-  .mat-grid-tile {
-    width: 100%;
-    transition: all 0.2s ease-in-out;
+  mat-grid-list {
+    margin: 50px;
 
-    mat-card {
+    .mat-grid-tile {
       width: 100%;
-      height: 100%;
+      transition: all 0.2s ease-in-out;
 
-      display: flex;
-      justify-content: center;
-      align-items: center;
+      mat-card {
+        width: 100%;
+        height: 100%;
 
-      border: none;
+        display: flex;
+        justify-content: center;
+        align-items: center;
 
-      mat-card-content {
-        font-family: monospace;
-        font-size: 1.2em;
+        border: 1px solid rgba($color: #000000, $alpha: 0.2);
+
+        mat-card-content {
+          font-family: Verdana, Geneva, Tahoma, sans-serif;
+          font-size: 1.2em;
+        }
       }
     }
-  }
 
-  .mat-grid-tile:hover {
-    scale: 1.2;
+    .mat-grid-tile:hover {
+      scale: 1.2;
+      cursor: pointer;
+    }
   }
 
   .footer {
