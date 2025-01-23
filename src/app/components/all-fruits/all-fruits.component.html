@@ -16,10 +16,19 @@
     <mat-grid-tile>
       <mat-card class="card" appearance="outlined">
         <mat-card-content [id]="fruit.id">
-          <p>{{ fruit.name }}</p>
+          <button
+            mat-button
+            disableRipple="true"
+            class="button"
+            (click)="goToFruitDetails(fruit.id)"
+          >
+            <p>{{ fruit.name }}</p>
+          </button>
         </mat-card-content>
       </mat-card>
     </mat-grid-tile>
     }
   </mat-grid-list>
 </div>
+
+<router-outlet></router-outlet>

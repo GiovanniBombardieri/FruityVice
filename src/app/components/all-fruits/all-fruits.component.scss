@@ -51,7 +51,11 @@
 
         mat-card-content {
           font-family: Verdana, Geneva, Tahoma, sans-serif;
-          font-size: 1.2em;
+
+          .button {
+            font-size: 1.2em;
+            color: #0000009e;
+          }
         }
       }
     }

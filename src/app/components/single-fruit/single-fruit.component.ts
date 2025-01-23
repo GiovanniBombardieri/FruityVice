@@ -17,6 +17,7 @@ import {
 import { MatSliderModule } from "@angular/material/slider";
 import { FormsModule } from "@angular/forms";
 import { MatRadioModule } from "@angular/material/radio";
+import { ActivatedRoute } from "@angular/router";
 
 @Component({
   selector: "app-single-fruit",
@@ -46,7 +47,7 @@ export class SingleFruitComponent implements OnInit {
   mode: ProgressBarMode = "determinate";
   value = 50;
 
-  constructor(private apiService: ApiService) {}
+  constructor(private apiService: ApiService, private route: ActivatedRoute) {}
 
   ngOnInit(): void {
     this.fruitNameCorrect = this.checkFruitName(this.fruitName);
@@ -54,8 +55,21 @@ export class SingleFruitComponent implements OnInit {
     this.checkFruitDescription(this.fruitNameCorrect);
   }
 
+  getFruitId(): any {
+    this.route.paramMap.subscribe((params) => {
+      const id = params.get("id");
+
+      console.log("questo è il primo log: " + id);
+
+      return id;
+    });
+  }
+
   seeSingleFuit(): void {
-    this.apiService.getSingleFruit(this.fruitId).subscribe((data: Fruit) => {
+    const id = this.getFruitId();
+    console.log("questo è il secondo log: " + id);
+
+    this.apiService.getSingleFruit(id).subscribe((data: Fruit) => {
       this.fruit = data;
     });
   }
