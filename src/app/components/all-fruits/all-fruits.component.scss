@@ -13,8 +13,6 @@
     height: 60%;
     width: 100%;
 
-    margin-bottom: 30px;
-
     video {
       width: 100vw;
       height: 100%;
@@ -33,7 +31,7 @@
   }
 
   mat-grid-list {
-    margin: 50px;
+    margin: 50px 50px 0 50px;
 
     .mat-grid-tile {
       width: 100%;
@@ -47,14 +45,36 @@
         justify-content: center;
         align-items: center;
 
-        border: 1px solid rgba($color: #000000, $alpha: 0.2);
+        border-radius: 20px;
+
+        img {
+          position: absolute;
+          top: 0;
+          left: 0;
+          height: 100%;
+          width: 100%;
+          object-fit: cover;
+          z-index: 1;
+          border-radius: 20px;
+        }
 
         mat-card-content {
+          width: 85%;
+          height: 100%;
+
+          border-radius: 20px;
+          background-color: rgba(0, 0, 0, 0.5);
+          z-index: 2;
+
+          display: flex;
+          justify-content: center;
+          align-items: center;
+
           font-family: Verdana, Geneva, Tahoma, sans-serif;
 
           .button {
-            font-size: 1.2em;
-            color: #0000009e;
+            font-size: 1.5em;
+            color: #ffffff;
           }
         }
       }
@@ -64,15 +84,5 @@
       scale: 1.2;
       cursor: pointer;
     }
-  }
-
-  .footer {
-    border: 2px solid crimson;
-    height: 50px;
-
-    display: flex;
-    align-items: center;
-
-    margin-top: 20px;
   }
 }

@@ -1,12 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import {
-  RouterLink,
-  RouterOutlet,
-  RouterLinkActive,
-  Router,
-} from "@angular/router";
 
 import { ApiService } from "../../service/api.service.service";
+import { FruitImageService } from "../../service/fruit-image.service";
 import { Fruit } from "../../models/fruit";
 
 import { MatCardModule } from "@angular/material/card";
@@ -18,14 +13,13 @@ import { MatPaginatorModule } from "@angular/material/paginator";
 
 import { MatInputModule } from "@angular/material/input";
 import { MatFormFieldModule } from "@angular/material/form-field";
+import { SingleFruitComponent } from "../single-fruit/single-fruit.component";
+import { FruitImage } from "../../models/fruit-image";
 
 @Component({
   selector: "app-all-fruits",
   standalone: true,
   imports: [
-    RouterLink,
-    RouterOutlet,
-    RouterLinkActive,
     MatCardModule,
     MatDividerModule,
     MatGridListModule,
@@ -34,6 +28,7 @@ import { MatFormFieldModule } from "@angular/material/form-field";
     MatPaginatorModule,
     MatFormFieldModule,
     MatInputModule,
+    SingleFruitComponent,
   ],
   templateUrl: "./all-fruits.component.html",
   styleUrl: "./all-fruits.component.scss",
@@ -41,6 +36,8 @@ import { MatFormFieldModule } from "@angular/material/form-field";
 export class AllFruitsComponent implements OnInit {
   fruits: Fruit[] = [];
   filteredFruits: Fruit[] = [];
+  selectedFruitId: number | null = null;
+  fruitImagesData: { [key: string]: string } = {};
 
   applyFilter(event: Event) {
     const filterValue = (event.target as HTMLInputElement).value.toLowerCase();
@@ -50,7 +47,10 @@ export class AllFruitsComponent implements OnInit {
     );
   }
 
-  constructor(private apiService: ApiService, private router: Router) {}
+  constructor(
+    private apiService: ApiService,
+    private apiImage: FruitImageService
+  ) {}
 
   ngOnInit(): void {
     this.seeAllFruits();
@@ -60,10 +60,26 @@ export class AllFruitsComponent implements OnInit {
     this.apiService.getAllFruits().subscribe((data: Fruit[]) => {
       this.fruits = data;
       this.filteredFruits = [...this.fruits];
+
+      this.fruits.forEach((value) => {
+        this.getfruitImages(value.name);
+      });
     });
   }
 
   goToFruitDetails(id: number): void {
-    this.router.navigate(["/fruit-details", id]);
+    this.selectedFruitId = id;
+  }
+
+  getfruitImages(name: string): void {
+    this.apiImage.getFruitImage(name).subscribe((data) => {
+      if (data.photos && data.photos[1] && data.photos[1].src.portrait) {
+        this.fruitImagesData[name] = data.photos[2].src.medium;
+      }
+    });
+  }
+
+  findFruitImage(name: string): string {
+    return this.fruitImagesData[name];
   }
 }

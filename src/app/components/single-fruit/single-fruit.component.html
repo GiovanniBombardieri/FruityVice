@@ -1,7 +1,4 @@
-<div
-  class="single-fruit-container"
-  [style]="'background: url(fruits/' + fruitNameCorrect + '.ico)'"
->
+<div class="single-fruit-container">
   <mat-card
     class="example-card"
     appearance="outlined"
@@ -98,6 +95,9 @@
           </section>
         </mat-card-content>
       </mat-card>
+      <div class="back">
+        <button mat-button (click)="goBack()">Back</button>
+      </div>
     </mat-card-content>
   </mat-card>
 </div>

@@ -1,0 +1,38 @@
+.toolbar {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+
+  background-color: rgb(191, 96, 0);
+  color: #fff;
+
+  &-menu {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+
+    p {
+      margin-bottom: 0px;
+      margin-left: 20px;
+
+      font-size: 27px;
+    }
+  }
+
+  .share-button {
+    background-color: rgb(191, 96, 0);
+    border: none;
+
+    .share-icon {
+      color: rgb(255, 255, 255);
+      transition: 0.2s ease-in-out;
+    }
+    .share-icon:hover {
+      cursor: pointer;
+      scale: 1.3;
+    }
+  }
+}

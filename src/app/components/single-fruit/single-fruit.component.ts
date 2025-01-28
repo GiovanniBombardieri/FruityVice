@@ -1,4 +1,4 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, EventEmitter, Input, OnInit, Output } from "@angular/core";
 
 import { ApiService } from "../../service/api.service.service";
 import { Fruit } from "../../models/fruit";
@@ -6,10 +6,7 @@ import { fruitDescription } from "../../models/fruit-data";
 
 import { MatCardModule } from "@angular/material/card";
 import { MatDividerModule } from "@angular/material/divider";
-import {
-  MatProgressSpinnerModule,
-  ProgressSpinnerMode,
-} from "@angular/material/progress-spinner";
+import { MatProgressSpinnerModule } from "@angular/material/progress-spinner";
 import {
   ProgressBarMode,
   MatProgressBarModule,
@@ -17,7 +14,7 @@ import {
 import { MatSliderModule } from "@angular/material/slider";
 import { FormsModule } from "@angular/forms";
 import { MatRadioModule } from "@angular/material/radio";
-import { ActivatedRoute } from "@angular/router";
+import { MatButtonModule } from "@angular/material/button";
 
 @Component({
   selector: "app-single-fruit",
@@ -31,13 +28,16 @@ import { ActivatedRoute } from "@angular/router";
     FormsModule,
     MatRadioModule,
     MatCardModule,
+    MatButtonModule,
   ],
   templateUrl: "./single-fruit.component.html",
   styleUrl: "./single-fruit.component.scss",
 })
 export class SingleFruitComponent implements OnInit {
   @Input() fruitId: number = 0; // Ricevo l'id del frutto singolo
-  @Input() fruitName: string = ""; // Ricevo il nome del frutto singolo
+  @Output() back = new EventEmitter<void>();
+
+  fruitName: string = "";
   fruitNameCorrect: string = "";
   fruit!: Fruit;
   fruitData = fruitDescription;
@@ -47,30 +47,21 @@ export class SingleFruitComponent implements OnInit {
   mode: ProgressBarMode = "determinate";
   value = 50;
 
-  constructor(private apiService: ApiService, private route: ActivatedRoute) {}
+  constructor(private apiService: ApiService) {}
 
   ngOnInit(): void {
-    this.fruitNameCorrect = this.checkFruitName(this.fruitName);
     this.seeSingleFuit();
-    this.checkFruitDescription(this.fruitNameCorrect);
   }
 
-  getFruitId(): any {
-    this.route.paramMap.subscribe((params) => {
-      const id = params.get("id");
-
-      console.log("questo è il primo log: " + id);
-
-      return id;
-    });
+  goBack(): void {
+    this.back.emit();
   }
 
   seeSingleFuit(): void {
-    const id = this.getFruitId();
-    console.log("questo è il secondo log: " + id);
-
-    this.apiService.getSingleFruit(id).subscribe((data: Fruit) => {
+    this.apiService.getSingleFruit(this.fruitId).subscribe((data: Fruit) => {
       this.fruit = data;
+      this.fruitNameCorrect = this.checkFruitName(data.name);
+      this.checkFruitDescription(this.fruitNameCorrect);
     });
   }
 
@@ -79,7 +70,6 @@ export class SingleFruitComponent implements OnInit {
       if (key === fruitName) {
         this.fruitDescription = value.description;
         this.fruitColor = value.color;
-        console.log(this.fruitColor);
       }
     });
   }

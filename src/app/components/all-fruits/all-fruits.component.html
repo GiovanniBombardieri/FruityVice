@@ -1,3 +1,5 @@
+@if (!selectedFruitId) {
+
 <div class="container">
   <div class="container-filter">
     <video src="background-fruit.mp4" autoplay loop muted></video>
@@ -15,6 +17,7 @@
     @for (fruit of filteredFruits; track $index) {
     <mat-grid-tile>
       <mat-card class="card" appearance="outlined">
+        <img [src]="findFruitImage(fruit.name)" alt="" />
         <mat-card-content [id]="fruit.id">
           <button
             mat-button
@@ -31,4 +34,9 @@
   </mat-grid-list>
 </div>
 
-<router-outlet></router-outlet>
+} @else {
+<app-single-fruit
+  [fruitId]="selectedFruitId"
+  (back)="selectedFruitId = null"
+></app-single-fruit>
+}
