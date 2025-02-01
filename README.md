@@ -13,7 +13,7 @@
   <h1 align="center">FruityVice</h1>
 
   <div align="center">
-    <img width="400" alt="App Screenshoot" src="/screenshoot.png"/>
+    <img width="1661" alt="Screenshot 2025-02-01 at 18 51 23" src="https://github.com/user-attachments/assets/1b513578-d8fa-431d-b49e-5f2a660230c3" />
   </div>
 
   <br/>
