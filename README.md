@@ -18,12 +18,7 @@
 
   <br/>
   <p align="left">
-    A free application where people can register and share their ideas and reports through posts, to contribute above all to:
-    <ul align="left">
-      <li>Protect and safeguard the city's cultural heritage</li>
-      <li>Protect and safeguard the city's natural heritage</li>
-      <li>Support positive social and environmental links between urban areas.</li>
-    </ul>
+    In this project I develop an application to encourage a proper healthy and more plant-based diet, displaying the list of fruits and their nutritional value through the FruityVice service.
     <br />
     <br />
     <a href="https://github.com/GiovanniBombardieri/Improve">View Demo</a>
@@ -62,20 +57,15 @@
 
 ## About The Project
 
-### Angular 1 per NTT DATA
-
-This is an application based on the APIs provided by GraphQL and REST API for Testing and Prototyping.
-It allows you to manage users and view/edit their posts.
-
 ### Specifications
 
-The application is developed using the Angular framework, with these specifications: after having authenticated, you must access the section where you can see the list of users, with the possibility of searching by name or email. It must be possible to create or delete a new user.
+The application must have a home page in which to display all the available fruits through the use of external APIs.
 
-The user of the application must be able to open a user's profile, where their details are shown, view their posts and then insert comments.
+The user clicking on an ad must be able to view its detail, that is, all the nutritional factors of the fruit.
 
-There must be a second functionality in which the user views all the posts, can perform searches and, once the post of interest has been identified, can view the comments and insert new ones. In this section the user can insert new posts.
+Finally, the application must allow the user to search for a specific fruit.
 
-<!-- PROJECT STRUCTURE -->
+This must always be done through the use of APIs specifying the name of the fruit for example api/fruit/banana.
 
 ### Project structure
 
@@ -89,8 +79,6 @@ improve/
 │   ┒── public/             # Static files like images, videos and favicons
 └── angular.json            # Angular Configuration
 ```
-
-<!-- BUILT WITH -->
 
 ### Built With
 
