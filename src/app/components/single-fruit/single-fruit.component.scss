@@ -41,60 +41,63 @@
     justify-content: center;
     align-items: center;
 
-    .header-card {
-      display: flex;
-      flex-direction: row;
-      justify-content: space-between;
-      align-items: center;
+    .full-card {
+      width: 800px;
 
-      &-info {
-        width: 50%;
-      }
+      .header-card {
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
 
-      &-img {
-        width: 50%;
-        text-align: end;
+        &-info {
+          width: 50%;
+        }
 
-        .fruit-logo {
-          max-width: 60px;
-          max-height: 60px;
+        &-img {
+          width: 50%;
+          text-align: end;
+
+          .fruit-logo {
+            max-width: 60px;
+            max-height: 60px;
+          }
         }
       }
-    }
 
-    .grams {
-      height: 50px;
-      display: flex;
-      flex-direction: row;
-      align-items: center;
-      justify-content: end;
+      .grams {
+        height: 50px;
+        display: flex;
+        flex-direction: row;
+        align-items: center;
+        justify-content: end;
 
-      label {
-        margin-right: 5px;
+        label {
+          margin-right: 5px;
+        }
       }
-    }
 
-    mat-divider {
-      margin: 20px 0;
-    }
+      mat-divider {
+        margin: 20px 0;
+      }
 
-    .example-card {
-      max-width: 800px;
-      margin-bottom: 10px;
-    }
+      .example-card {
+        margin-bottom: 10px;
 
-    .example-h2 {
-      margin: 10px;
-    }
+        .example-h2 {
+          margin: 10px;
+        }
 
-    .example-margin {
-      margin: 0 10px;
-    }
+        .example-margin {
+          margin: 0 10px;
+        }
+      }
 
-    .back {
-      display: flex;
-      justify-content: right;
-      margin-top: 20px;
+      .back {
+        display: flex;
+        justify-content: right;
+        margin-top: 20px;
+      }
     }
   }
 }

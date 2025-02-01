@@ -71,8 +71,6 @@ export class SingleFruitComponent implements OnInit {
 
   seeSingleFuit(): void {
     this.apiService.getSingleFruit(this.fruitId).subscribe((data: Fruit) => {
-      console.log(data);
-
       this.fruit = data;
       this.fruitNameCorrect = this.checkFruitName(data.name);
       this.checkFruitDescription(this.fruitNameCorrect);

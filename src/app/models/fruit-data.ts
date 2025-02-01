@@ -199,7 +199,7 @@ export const fruitDescription = {
       "The jackfruit is a large tropical fruit with a spiky green skin and sweet, yellow flesh. Known for its versatility, it can be eaten ripe or cooked as a meat substitute in savory dishes. Native to South Asia, it is a staple in many cuisines.",
     color: "#FFEB3B" /* Yellow flesh */,
   },
-  "Horned Melon": {
+  HornedMelon: {
     description:
       "The horned melon, or kiwano, is a spiky, orange fruit with bright green, jelly-like flesh. Native to Africa, it has a mildly sweet and tangy flavor and is enjoyed fresh or as a garnish.",
     color: "#FF9800" /* Orange skin with green flesh */,
@@ -224,7 +224,7 @@ export const fruitDescription = {
       "The pumpkin is a large, round fruit with a tough orange skin and sweet, fibrous flesh. Widely cultivated, it is used in soups, pies, and decorations, especially during Halloween and Thanksgiving.",
     color: "#FF9800" /* Orange skin */,
   },
-  "Japanese Persimmon": {
+  JapanesePersimmon: {
     description:
       "The Japanese persimmon is a bright orange fruit with a smooth skin and a sweet, honey-like flavor. Eaten fresh or dried, it is a popular delicacy in East Asia and an autumnal favorite.",
     color: "#FF6F00" /* Bright orange */,
@@ -239,7 +239,7 @@ export const fruitDescription = {
       "The annona, or custard apple, is a heart-shaped fruit with a green, scaly skin and creamy, sweet flesh. Native to tropical regions, it is highly valued for its unique flavor and nutritional benefits.",
     color: "#8BC34A" /* Green scaly skin */,
   },
-  "Ceylon Gooseberry": {
+  CeylonGooseberry: {
     description:
       "The Ceylon gooseberry is a small, tart fruit with a bright orange skin and juicy flesh. Native to Sri Lanka, it is used in jams, desserts, and beverages for its tangy, refreshing flavor.",
     color: "#FF5722" /* Bright orange skin */,
