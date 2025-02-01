@@ -27,82 +27,24 @@ export class ToolbarComponent {
   private _bottomSheet = inject(MatBottomSheet);
 
   openBottomSheet(): void {
-    this._bottomSheet.open(BottomSheetOverviewExampleSheet);
-  }
-
-  sharePage(): void {
-    if (navigator.share) {
-      navigator
-        .share({
-          title: "FruityVice - Angular Project",
-          text: "Guarda il mio ultimo progetto Angular!",
-          url: window.location.href,
-        })
-        .then(() => console.log("Condivisione avviata con successo!"))
-        .catch((err) => console.error("Errore nella condivisione:", err));
-    } else {
-      alert("La condivisione non è supportata su questo browser.");
-    }
+    this._bottomSheet.open(BottomSheetOverviewSheet);
   }
 }
 
 @Component({
-  selector: "bottom-sheet-overview-example-sheet",
+  selector: "bottom-sheet-overview-sheet",
   standalone: true,
-  template: `
-    <mat-nav-list>
-      <a
-        href="https://www.facebook.com/sharer/sharer.php?u={{ url }}&title={{
-          title
-        }}&text={{ text }}"
-        target="_blank"
-        mat-list-item
-      >
-        <span matListItemTitle>Facebook</span>
-      </a>
-
-      <a
-        href="https://twitter.com/intent/tweet?url={{ url }}&title={{
-          title
-        }}&text={{ text }}"
-        target="_blank"
-        mat-list-item
-      >
-        <span matListItemTitle>X</span>
-      </a>
-
-      <a
-        href="https://www.linkedin.com/shareArticle?mini=true&url={{
-          url
-        }}&title={{ title }}&text={{ text }}"
-        target="_blank"
-        mat-list-item
-      >
-        <span matListItemTitle>LinkedIn</span>
-      </a>
-
-      <a
-        href="https://api.whatsapp.com/send?text={{ url }}&title={{
-          title
-        }}&text={{ text }}"
-        target="_blank"
-        mat-list-item
-      >
-        <span matListItemTitle>WhatsApp</span>
-      </a>
-    </mat-nav-list>
-  `,
   imports: [MatListModule, MatIconModule],
+  templateUrl: "./bottom-sheet-overview.component.html",
+  styleUrl: "./bottom-sheet-overview.component.scss",
 })
-export class BottomSheetOverviewExampleSheet {
+export class BottomSheetOverviewSheet {
   url = window.location.href;
   title = "FruityVice - Angular Project";
   text = "Guarda il mio ultimo progetto Angular!";
 
   private _bottomSheetRef =
-    inject<MatBottomSheetRef<BottomSheetOverviewExampleSheet>>(
-      MatBottomSheetRef
-    );
+    inject<MatBottomSheetRef<BottomSheetOverviewSheet>>(MatBottomSheetRef);
 
   openLink(event: MouseEvent): void {
     this._bottomSheetRef.dismiss();

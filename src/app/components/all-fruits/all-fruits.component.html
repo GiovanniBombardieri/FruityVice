@@ -18,13 +18,11 @@
     <mat-grid-tile>
       <mat-card class="card" appearance="outlined">
         <img [src]="findFruitImage(fruit.name)" alt="" />
-        <mat-card-content [id]="fruit.id">
-          <button
-            mat-button
-            disableRipple="true"
-            class="button"
-            (click)="goToFruitDetails(fruit.id)"
-          >
+        <mat-card-content
+          [id]="fruit.id"
+          (click)="goToFruitDetails(fruit.id, fruit.name)"
+        >
+          <button mat-button disableRipple="true" class="button">
             <p>{{ fruit.name }}</p>
           </button>
         </mat-card-content>
@@ -37,6 +35,7 @@
 } @else {
 <app-single-fruit
   [fruitId]="selectedFruitId"
+  [fruitNameforImg]="selectedFruitName"
   (back)="selectedFruitId = null"
 ></app-single-fruit>
 }

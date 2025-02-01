@@ -1,103 +1,171 @@
 <div class="single-fruit-container">
-  <mat-card
-    class="example-card"
-    appearance="outlined"
-    [style]="'border: 5px solid ' + fruitColor + ';'"
-  >
-    <mat-card-header class="header-card">
-      <div class="header-card-info">
-        <mat-card-title>{{ fruit.name }}</mat-card-title>
-        <mat-card-subtitle>{{ fruit.family }}</mat-card-subtitle>
-      </div>
-      <div class="header-card-img">
-        <img
-          [src]="'fruits/' + fruitNameCorrect + '.ico'"
-          [alt]="fruitName + 'Image'"
-          class="fruit-logo"
-        />
-      </div>
-    </mat-card-header>
-    <mat-card-content>
-      <mat-divider></mat-divider>
-      <p><strong>Genus:</strong> {{ fruit.genus }}</p>
-      <p>{{ fruitDescription }}</p>
+  <img [src]="backgroundImage" alt="" class="background-fruit-img" />
+  <div class="light-grey-background">
+    <mat-card
+      class="example-card"
+      appearance="outlined"
+      [style]="'border: 5px solid ' + fruitColor + ';'"
+    >
+      <mat-card-header class="header-card">
+        <div class="header-card-info">
+          <mat-card-title>{{ fruit.name }}</mat-card-title>
+          <mat-card-subtitle>{{ fruit.family }}</mat-card-subtitle>
+        </div>
+        <div class="header-card-img">
+          <img
+            [src]="'fruits/' + fruitNameCorrect + '.ico'"
+            [alt]="fruitName + 'Image'"
+            class="fruit-logo"
+          />
+        </div>
+      </mat-card-header>
+      <mat-card-content>
+        <mat-divider></mat-divider>
+        <p><strong>Genus:</strong> {{ fruit.genus }}</p>
+        <p>{{ fruitDescription }}</p>
 
-      <p><strong>Nutritions:</strong></p>
-      <mat-card class="example-card">
-        <mat-card-content>
-          <p class="example-h2">Calories: {{ fruit.nutritions.calories }}g</p>
+        <div class="grams">
+          <input
+            type="number"
+            value="100"
+            id="grams"
+            (input)="onInputChange($event)"
+          />
+        </div>
 
-          <section class="example-section">
-            <mat-progress-bar
-              class="example-margin"
-              [mode]="mode"
-              [value]="fruit.nutritions.calories"
-            >
-            </mat-progress-bar>
-          </section>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="example-card">
-        <mat-card-content>
-          <p class="example-h2">
-            Carbohydrates: {{ fruit.nutritions.carbohydrates }}g
-          </p>
+        <p><strong>Nutritions:</strong></p>
+        <mat-card class="example-card">
+          <mat-card-content>
+            <p class="example-h2">
+              Calories:
+              {{
+                grams == 100
+                  ? fruit.nutritions.calories
+                  : ((fruit.nutritions.calories / 100) * grams
+                    | number : "1.0-0")
+              }}g
+            </p>
 
-          <section class="example-section">
-            <mat-progress-bar
-              class="example-margin"
-              [mode]="mode"
-              [value]="fruit.nutritions.carbohydrates"
-            >
-            </mat-progress-bar>
-          </section>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="example-card">
-        <mat-card-content>
-          <p class="example-h2">Fat: {{ fruit.nutritions.fat }}g</p>
+            <section class="example-section">
+              <mat-progress-bar
+                class="example-margin"
+                [mode]="mode"
+                [value]="
+                  grams == 100
+                    ? fruit.nutritions.calories
+                    : (fruit.nutritions.calories / 100) * grams
+                "
+              >
+              </mat-progress-bar>
+            </section>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="example-card">
+          <mat-card-content>
+            <p class="example-h2">
+              Carbohydrates:
+              {{
+                grams == 100
+                  ? fruit.nutritions.carbohydrates
+                  : ((fruit.nutritions.carbohydrates / 100) * grams
+                    | number : "1.0-0")
+              }}g
+            </p>
 
-          <section class="example-section">
-            <mat-progress-bar
-              class="example-margin"
-              [mode]="mode"
-              [value]="fruit.nutritions.fat"
-            >
-            </mat-progress-bar>
-          </section>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="example-card">
-        <mat-card-content>
-          <p class="example-h2">Protein: {{ fruit.nutritions.protein }}g</p>
+            <section class="example-section">
+              <mat-progress-bar
+                class="example-margin"
+                [mode]="mode"
+                [value]="
+                  grams == 100
+                    ? fruit.nutritions.carbohydrates
+                    : (fruit.nutritions.carbohydrates / 100) * grams
+                "
+              >
+              </mat-progress-bar>
+            </section>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="example-card">
+          <mat-card-content>
+            <p class="example-h2">
+              Fat:
+              {{
+                grams == 100
+                  ? fruit.nutritions.fat
+                  : ((fruit.nutritions.fat / 100) * grams | number : "1.0-0")
+              }}g
+            </p>
 
-          <section class="example-section">
-            <mat-progress-bar
-              class="example-margin"
-              [mode]="mode"
-              [value]="fruit.nutritions.protein"
-            >
-            </mat-progress-bar>
-          </section>
-        </mat-card-content>
-      </mat-card>
-      <mat-card class="example-card">
-        <mat-card-content>
-          <p class="example-h2">Sugar: {{ fruit.nutritions.sugar }}g</p>
+            <section class="example-section">
+              <mat-progress-bar
+                class="example-margin"
+                [mode]="mode"
+                [value]="
+                  grams == 100
+                    ? fruit.nutritions.fat
+                    : (fruit.nutritions.fat / 100) * grams
+                "
+              >
+              </mat-progress-bar>
+            </section>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="example-card">
+          <mat-card-content>
+            <p class="example-h2">
+              Protein:
+              {{
+                grams == 100
+                  ? fruit.nutritions.protein
+                  : ((fruit.nutritions.protein / 100) * grams
+                    | number : "1.0-0")
+              }}g
+            </p>
 
-          <section class="example-section">
-            <mat-progress-bar
-              class="example-margin"
-              [mode]="mode"
-              [value]="fruit.nutritions.sugar"
-            >
-            </mat-progress-bar>
-          </section>
-        </mat-card-content>
-      </mat-card>
-      <div class="back">
-        <button mat-button (click)="goBack()">Back</button>
-      </div>
-    </mat-card-content>
-  </mat-card>
+            <section class="example-section">
+              <mat-progress-bar
+                class="example-margin"
+                [mode]="mode"
+                [value]="
+                  grams == 100
+                    ? fruit.nutritions.protein
+                    : (fruit.nutritions.protein / 100) * grams
+                "
+              >
+              </mat-progress-bar>
+            </section>
+          </mat-card-content>
+        </mat-card>
+        <mat-card class="example-card">
+          <mat-card-content>
+            <p class="example-h2">
+              Sugar:
+              {{
+                grams == 100
+                  ? fruit.nutritions.sugar
+                  : ((fruit.nutritions.sugar / 100) * grams | number : "1.0-0")
+              }}g
+            </p>
+
+            <section class="example-section">
+              <mat-progress-bar
+                class="example-margin"
+                [mode]="mode"
+                [value]="
+                  grams == 100
+                    ? fruit.nutritions.sugar
+                    : (fruit.nutritions.sugar / 100) * grams
+                "
+              >
+              </mat-progress-bar>
+            </section>
+          </mat-card-content>
+        </mat-card>
+        <div class="back">
+          <button mat-button (click)="goBack()">Back</button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
 </div>

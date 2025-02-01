@@ -37,6 +37,7 @@ export class AllFruitsComponent implements OnInit {
   fruits: Fruit[] = [];
   filteredFruits: Fruit[] = [];
   selectedFruitId: number | null = null;
+  selectedFruitName: string = "";
   fruitImagesData: { [key: string]: string } = {};
 
   applyFilter(event: Event) {
@@ -67,8 +68,9 @@ export class AllFruitsComponent implements OnInit {
     });
   }
 
-  goToFruitDetails(id: number): void {
+  goToFruitDetails(id: number, name: string): void {
     this.selectedFruitId = id;
+    this.selectedFruitName = name;
   }
 
   getfruitImages(name: string): void {

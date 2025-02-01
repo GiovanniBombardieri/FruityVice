@@ -9,7 +9,7 @@
 
 .single-fruit-container {
   width: 100vw;
-  height: 100vh;
+  min-height: 90%;
 
   display: flex;
   justify-content: center;
@@ -17,56 +17,84 @@
 
   z-index: 1;
 
-  .header-card {
+  .background-fruit-img {
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    z-index: 1;
+    border-radius: 20px;
+  }
+
+  .light-grey-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    z-index: 2;
+
     display: flex;
-    flex-direction: row;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
 
-    &-info {
-      width: 50%;
-    }
+    .header-card {
+      display: flex;
+      flex-direction: row;
+      justify-content: space-between;
+      align-items: center;
 
-    &-img {
-      width: 50%;
-      text-align: end;
+      &-info {
+        width: 50%;
+      }
 
-      .fruit-logo {
-        width: 60px;
+      &-img {
+        width: 50%;
+        text-align: end;
+
+        .fruit-logo {
+          max-width: 60px;
+          max-height: 60px;
+        }
       }
     }
-  }
 
-  mat-divider {
-    margin: 20px 0;
-  }
+    .grams {
+      height: 50px;
+      display: flex;
+      flex-direction: row;
+      align-items: center;
+      justify-content: end;
 
-  .example-card {
-    max-width: 1000px;
-    margin-bottom: 10px;
-  }
+      label {
+        margin-right: 5px;
+      }
+    }
 
-  .example-h2 {
-    margin: 10px;
-  }
+    mat-divider {
+      margin: 20px 0;
+    }
 
-  .example-margin {
-    margin: 0 10px;
-  }
+    .example-card {
+      max-width: 800px;
+      margin-bottom: 10px;
+    }
 
-  .back {
-    display: flex;
-    justify-content: right;
-    margin-top: 20px;
+    .example-h2 {
+      margin: 10px;
+    }
+
+    .example-margin {
+      margin: 0 10px;
+    }
+
+    .back {
+      display: flex;
+      justify-content: right;
+      margin-top: 20px;
+    }
   }
 }
-
-// .single-fruit-container::before {
-//   content: "";
-//   position: absolute;
-
-//   width: 50%;
-//   height: 100%;
-//   background: #fff;
-//   filter: blur(300px);
-// }
