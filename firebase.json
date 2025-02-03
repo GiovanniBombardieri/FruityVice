@@ -1,6 +1,6 @@
 {
   "hosting": {
-    "public": "dist/FruityVice",
+    "public": "dist/fruity-vice",
     "ignore": ["firebase.json", "**/.*", "**/node_modules/**"],
     "rewrites": [
       {
