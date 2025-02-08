@@ -4,6 +4,7 @@
 ![Github issues](https://img.shields.io/github/issues/giovanniBombardieri/FruityVice)
 ![GitHub forks](https://img.shields.io/github/forks/giovanniBombardieri/FruityVice?style=flat)
 ![Github stars](https://img.shields.io/github/stars/giovanniBombardieri/FruityVice?style=flat&color=%23EF2D5E)
+[![Netlify Status](https://api.netlify.com/api/v1/badges/b2d45082-6fe0-4d20-be34-a22ca48e1fa7/deploy-status)](https://app.netlify.com/sites/fruitvice/deploys)
 
 [![LinkedIn](https://img.shields.io/badge/LinkedIn-0077B5?style=for-the-badge&logo=linkedin&logoColor=white)](https://www.linkedin.com/in/giovanni-bombardieri-13ba7021b/)
 
