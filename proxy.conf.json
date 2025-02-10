@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://fruitvice.netlify.app/",
+    "target": "https://www.fruityvice.com/",
     "secure": false,
     "changeOrigin": true
   }
