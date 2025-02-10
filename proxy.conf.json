@@ -1,6 +1,6 @@
 {
   "/api": {
-    "target": "https://www.fruityvice.com/",
+    "target": "https://www.fruityvice.com",
     "secure": false,
     "changeOrigin": true
   }
