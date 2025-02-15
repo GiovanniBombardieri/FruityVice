@@ -1,16 +1,19 @@
-import { TestBed } from '@angular/core/testing';
+import { TestBed } from "@angular/core/testing";
+import { provideHttpClient } from "@angular/common/http";
 
-import { FruitImageService } from './fruit-image.service';
+import { FruitImageService } from "./fruit-image.service";
 
-describe('FruitImageService', () => {
+describe("FruitImageService", () => {
   let service: FruitImageService;
 
   beforeEach(() => {
-    TestBed.configureTestingModule({});
+    TestBed.configureTestingModule({
+      providers: [provideHttpClient()],
+    });
     service = TestBed.inject(FruitImageService);
   });
 
-  it('should be created', () => {
+  it("should be created", () => {
     expect(service).toBeTruthy();
   });
 });
