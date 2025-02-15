@@ -77,8 +77,13 @@ improve/
 │   │   ├── components/     # Application Components
 │   │   ├── models/         # Data Models
 │   │   ├── service/        # Services for logic
-│   ┒── public/             # Static files like images, videos and favicons
-└── angular.json            # Angular Configuration
+│   ├── public/             # Static files like images, videos and favicons
+├── netlify/                # Folder for Netlify configurations and functions
+│   ├── functions/          # Serverless Functions for Netlify
+│   │   └── proxy-api.js    # Proxy function for API calls
+├── angular.json            # Angular Configuration
+└── netlify.toml            # Configuration for deployment on Netlify
+
 ```
 
 ### Built With
