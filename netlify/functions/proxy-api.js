@@ -1,15 +1,6 @@
 // netlify/functions/proxy-api.js
 
-// Se Netlify usa Node 18 o superiore, potresti non aver bisogno di "node-fetch".
-// Per sicurezza, puoi installarlo: `npm install node-fetch`
-// e poi importarlo:
-const fetch = require("node-fetch");
-
 exports.handler = async (event, context) => {
-  // Esempio: gestiamo due endpoint /fruit/all e /fruit/:id
-  // L'idea è di leggere la path dalla query string
-  // (oppure dall'event.path, dipende da come vuoi gestirlo)
-
   // Se usi la query string: ?path=/fruit/all
   const { path = "" } = event.queryStringParameters || {};
 
@@ -27,9 +18,6 @@ exports.handler = async (event, context) => {
       body: JSON.stringify(data),
       headers: {
         "Content-Type": "application/json",
-        // Se vuoi abilitare CORS dal serverless (di solito non serve
-        // se la chiamata parte dallo stesso dominio Netlify)
-        // 'Access-Control-Allow-Origin': '*',
       },
     };
   } catch (error) {
